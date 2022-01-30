@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo_bloc/signup/core/signup/models/email.dart';
+import 'package:todo_bloc/todo_bloc/core/signup/models/email.dart';
 
 void main() {
   group("Test Email validator method", () {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_bloc/signup/core/repository/signup_repository.dart';
-import 'package:todo_bloc/signup/presentation/screens/signup/signup_page.dart';
-import 'package:todo_bloc/signup/shared/themes/theme.dart';
+import 'package:todo_bloc/todo_bloc/presentation/screens/signup/signup_page.dart';
+import 'package:todo_bloc/todo_bloc/shared/themes/theme.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
