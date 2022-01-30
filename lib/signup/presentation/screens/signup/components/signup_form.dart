@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_bloc/signup/presentation/screens/models/signup/user_model.dart';
 import 'package:todo_bloc/signup/shared/themes/style.dart';
+import 'package:todo_bloc/signup/shared/themes/theme.dart';
 import 'package:todo_bloc/signup/shared/widgets/separator_box.dart';
 
 class SignupForm extends StatefulWidget {
@@ -18,12 +19,11 @@ class SignupForm extends StatefulWidget {
 
 class _SignupFormState extends State<SignupForm> {
   bool isLoading = false;
-
   @override
   Widget build(BuildContext context) {
     Future<void> procurarNif() async {
       isLoading = true;
-      Future.delayed(const Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 2));
       setState(() {
         isLoading = false;
       });
@@ -41,13 +41,6 @@ class _SignupFormState extends State<SignupForm> {
                 style: Theme.of(context).primaryTextTheme.bodyText1,
               ),
               const SeparatorBox.small(),
-              if (isLoading == true)
-                SizedBox(
-                    width: 15,
-                    height: 15,
-                    child: CircularProgressIndicator(
-                      color: Theme.of(context).primaryColor,
-                    ))
             ],
           ),
           const SeparatorBox.small(),
@@ -99,12 +92,20 @@ class _SignupFormState extends State<SignupForm> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  "Continuar ",
+              children: [
+                const Text(
+                  "Continuar   ",
                   style: TextStyle(color: Colors.white),
                 ),
-                Icon(CupertinoIcons.arrow_right, size: 16)
+                if (isLoading == true)
+                  SizedBox(
+                      width: 15,
+                      height: 15,
+                      child: CircularProgressIndicator(
+                        color: Theme.of(context).backgroundColor,
+                      ))
+                else
+                  const Icon(CupertinoIcons.arrow_right, size: 16)
               ],
             ),
             style: TextButton.styleFrom(

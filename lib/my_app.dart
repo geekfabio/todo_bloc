@@ -4,8 +4,7 @@ import 'package:todo_bloc/signup/presentation/screens/signup/signup_page.dart';
 import 'package:todo_bloc/signup/shared/themes/theme.dart';
 
 class MyApp extends StatelessWidget {
-  final SignupRepository repository;
-  const MyApp({Key? key, required this.repository}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

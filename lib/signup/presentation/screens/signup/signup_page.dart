@@ -95,7 +95,7 @@ class _SignupPageState extends State<SignupPage> {
             )),
       ],
     );
-
+    print(AppTheme.screenHeight(context));
     return Scaffold(
       body: SafeArea(
           child: Row(
@@ -110,18 +110,25 @@ class _SignupPageState extends State<SignupPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _topText(),
-                  SignupForm(),
+                  const SignupForm(),
                   const SeparatorBox.xLarge(),
-                  Flexible(child: SizedBox(width: 360, child: fakeSlideDots))
+                  if (AppTheme.screenHeight(context) > 700)
+                    Flexible(child: SizedBox(width: 360, child: fakeSlideDots))
                 ],
               ),
             ),
           )),
-          Expanded(
-              child: Container(
-            decoration:
-                const BoxDecoration(gradient: LightColor.colorGradientGrey),
-          ))
+          if (AppTheme.screenWidth(context) > 700)
+            Expanded(
+                child: Container(
+              decoration:
+                  const BoxDecoration(gradient: LightColor.colorGradientGrey),
+              child: Column(
+                children: [
+                  //create a widget assetimage and text
+                ],
+              ),
+            ))
         ],
       )),
     );
