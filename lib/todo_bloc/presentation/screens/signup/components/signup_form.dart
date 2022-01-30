@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_bloc/signup/presentation/screens/models/signup/user_model.dart';
-import 'package:todo_bloc/signup/shared/themes/style.dart';
-import 'package:todo_bloc/signup/shared/themes/theme.dart';
-import 'package:todo_bloc/signup/shared/widgets/separator_box.dart';
+import 'package:todo_bloc/todo_bloc/presentation/screens/models/signup/user_model.dart';
+import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
+import 'package:todo_bloc/todo_bloc/shared/themes/theme.dart';
+import 'package:todo_bloc/todo_bloc/shared/widgets/separator_box.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({Key? key}) : super(key: key);
