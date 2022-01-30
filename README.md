@@ -2,11 +2,10 @@
 
 Projeto Todo App - Flutter
 
-Este é um projeto que foi desenvolvido em Flutter a inicio foi para usar o autocomplete no formulario usando o nº do bilhete para auto completar os dados ao cadastrar o usúario. As ideias começaram a expandir e decidi adicionar funcionalidades de TO DO List
+
 
 ## Descrição
 
-A inicio foi para usar o autocomplete no formulario usando o nº do bilhete para auto completar os dados ao cadastrar o usúario. As ideias começaram a expandir e decidi adicionar funcionalidades de TO DO List
 
 
 //TODO ADD IMAGEM AQUI
@@ -30,7 +29,6 @@ A inicio foi para usar o autocomplete no formulario usando o nº do bilhete para
 - [ ] Gerência de estado com BLOC
 
 ## Funções do App:
-* Auto completar as informações do usúario pelo BI/NIF (valido apenas para Angola parecido com o CEP no Brasil)
 * Navegar entre telas de Login e Cadastro, Home
 * Adicionar Tasks
 * Remover Tasks
@@ -45,6 +43,7 @@ A inicio foi para usar o autocomplete no formulario usando o nº do bilhete para
 * Aprimorando o Bloc 
 * Entender o Hive
 * Aprimorar o ThemeLight e ThemeDark
+* Responsividade <- principal
 
 ## Próximos passos:
 * Utilização de *Splash Screen*
