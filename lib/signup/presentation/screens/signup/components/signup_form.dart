@@ -18,28 +18,12 @@ class SignupForm extends StatefulWidget {
 
 class _SignupFormState extends State<SignupForm> {
   bool isLoading = false;
-  UserModel? model;
-  final TextEditingController _controller = TextEditingController();
-  final TextEditingController _controllerNome = TextEditingController();
-  final TextEditingController _controllerAniversario = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    Future<void> procurarNif(String value) async {
+    Future<void> procurarNif() async {
       isLoading = true;
       Future.delayed(const Duration(seconds: 3));
-      var response = await http
-          .get(Uri.parse('https://api.gov.ao/consultarBI/v2/?bi=$value'));
-      var pardeJson = json.decode(response.body);
-      if (response.statusCode == 200 &&
-          pardeJson.toString().contains("ID_NUMBER")) {
-        setState(() {
-          model = UserModel.fromJson(pardeJson[0]);
-          _controller.text = model!.iDNUMBER.toString();
-          _controllerNome.text =
-              model!.fIRSTNAME.toString() + " " + model!.lASTNAME.toString();
-          _controllerAniversario.text = model!.bIRTHDATE.toString();
-        });
-      }
       setState(() {
         isLoading = false;
       });
@@ -52,7 +36,7 @@ class _SignupFormState extends State<SignupForm> {
           Row(
             children: [
               Text(
-                "Numero do BI/NIF",
+                "Nome",
                 textAlign: TextAlign.start,
                 style: Theme.of(context).primaryTextTheme.bodyText1,
               ),
@@ -67,32 +51,31 @@ class _SignupFormState extends State<SignupForm> {
             ],
           ),
           const SeparatorBox.small(),
-          TextField(
+          const TextField(
             maxLength: 50,
-            controller: _controller,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               counterText: "",
               constraints: BoxConstraints(maxWidth: 360, maxHeight: 40),
             ),
           ),
           const SeparatorBox.small(),
           Text(
-            "Nome Completo",
+            "Email",
             textAlign: TextAlign.start,
             style: Theme.of(context).primaryTextTheme.bodyText1,
           ),
           const SeparatorBox.small(),
-          TextField(
+          const TextField(
             maxLength: 50,
-            controller: _controllerNome,
-            decoration: const InputDecoration(
+            obscureText: true,
+            decoration: InputDecoration(
               counterText: "",
               constraints: BoxConstraints(maxWidth: 360, maxHeight: 40),
             ),
           ),
           const SeparatorBox.small(),
           Text(
-            "Data de Aniversario",
+            "Password",
             textAlign: TextAlign.start,
             style: Theme.of(context).primaryTextTheme.bodyText1,
           ),
@@ -100,7 +83,6 @@ class _SignupFormState extends State<SignupForm> {
           TextFormField(
             maxLength: 50,
             key: const Key("field_nif"),
-            controller: _controllerAniversario,
             onChanged: (String value) {},
             decoration: const InputDecoration(
               counterText: "",
@@ -111,7 +93,7 @@ class _SignupFormState extends State<SignupForm> {
           TextButton(
             onPressed: () {
               setState(() {
-                procurarNif(_controller.text);
+                procurarNif();
               });
             },
             child: Row(
@@ -119,7 +101,7 @@ class _SignupFormState extends State<SignupForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Text(
-                  "Continuar  ",
+                  "Continuar ",
                   style: TextStyle(color: Colors.white),
                 ),
                 Icon(CupertinoIcons.arrow_right, size: 16)
@@ -130,6 +112,7 @@ class _SignupFormState extends State<SignupForm> {
                   const RoundedRectangleBorder(borderRadius: Corners.mdBorder),
               maximumSize: const Size(360, 50),
               primary: Colors.white,
+              enableFeedback: isLoading,
               backgroundColor: Theme.of(context).primaryColor,
               elevation: 1,
               minimumSize: const Size(355, 50),
