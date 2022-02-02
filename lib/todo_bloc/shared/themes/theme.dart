@@ -49,7 +49,43 @@ class AppTheme {
   );
 
   //TODO implemts dark theme
-  static ThemeData darkTheme = ThemeData();
+  static ThemeData darkTheme = ThemeData(
+    splashColor: DarkColor.splashBackground,
+    backgroundColor: DarkColor.background,
+    primaryColor: DarkColor.primaryColor,
+    cardTheme: const CardTheme(color: DarkColor.background),
+    textTheme: const TextTheme(bodyText1: TextStyle(color: DarkColor.black)),
+    iconTheme: const IconThemeData(color: DarkColor.iconColor),
+    bottomAppBarColor: DarkColor.background,
+    dividerColor: DarkColor.lightGrey,
+    primaryTextTheme: TextTheme(
+        button: buttonStyle,
+        subtitle1: titleStyle,
+        subtitle2: subTitleStyle,
+        bodyText1: const TextStyle(color: DarkColor.bodyTextCaption)),
+    inputDecorationTheme: InputDecorationTheme(
+      focusColor: DarkColor.focusColor,
+      fillColor: DarkColor.inputFillColor,
+      hoverColor: DarkColor.inputHoverColor,
+      errorBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: DarkColor.red, width: 2.0),
+        borderRadius: Corners.lgBorder,
+      ),
+      iconColor: DarkColor.lightBlue,
+      border: const OutlineInputBorder(
+        borderSide: BorderSide(color: DarkColor.borderColor, width: 1.2),
+        borderRadius: Corners.mdBorder,
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: DarkColor.red, width: 1.5),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      focusedBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: DarkColor.focusedBorderColor, width: 1.5),
+        borderRadius: Corners.mdBorder,
+      ),
+    ),
+  );
 
   static TextStyle inputStyle = const TextStyle(fontSize: 16);
   static TextStyle buttonStyle =

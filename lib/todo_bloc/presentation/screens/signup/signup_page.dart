@@ -1,12 +1,14 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/src/provider.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/light_color.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
 import 'package:todo_bloc/todo_bloc/shared/widgets/ripple_extension.dart';
 import 'package:todo_bloc/todo_bloc/presentation/screens/signup/components/signup_form.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/theme.dart';
 import 'package:todo_bloc/todo_bloc/shared/widgets/separator_box.dart';
+
+import 'bloc/cubit/theme_cubit.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -25,7 +27,9 @@ class _SignupPageState extends State<SignupPage> {
             Icon(
               Icons.shield,
               color: Theme.of(context).iconTheme.color,
-            ).ripple(() {}),
+            ).ripple(() {
+              context.read<ThemeCubit>().toggleTheme();
+            }),
             Text(
               " TodoBloc®",
               style: Theme.of(context)
