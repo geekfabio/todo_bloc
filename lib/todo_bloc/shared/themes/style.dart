@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// Used for all animations in the  app
 
-class TransitionTimes {
+class AppTransitionTimes {
   static const veryFast = Duration(milliseconds: 70);
   static const fast = Duration(milliseconds: 150);
   static const medium = Duration(milliseconds: 300);
@@ -12,7 +12,7 @@ class TransitionTimes {
   static const verySlow = Duration(seconds: 10);
 }
 
-class IconSizes {
+class AppIconSizes {
   static const double xl = 48;
   static const double lg = 32;
   static const double md = 24;
