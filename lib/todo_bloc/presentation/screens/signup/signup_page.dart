@@ -8,8 +8,6 @@ import 'package:todo_bloc/todo_bloc/presentation/screens/signup/components/signu
 import 'package:todo_bloc/todo_bloc/shared/themes/theme.dart';
 import 'package:todo_bloc/todo_bloc/shared/widgets/separator_box.dart';
 
-import 'bloc/cubit/theme_cubit.dart';
-
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
 
@@ -27,9 +25,7 @@ class _SignupPageState extends State<SignupPage> {
             Icon(
               Icons.shield,
               color: Theme.of(context).iconTheme.color,
-            ).ripple(() {
-              context.read<ThemeCubit>().toggleTheme();
-            }),
+            ).ripple(() {}),
             Text(
               " TodoBloc®",
               style: Theme.of(context)
