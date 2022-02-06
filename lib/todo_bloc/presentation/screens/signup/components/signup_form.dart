@@ -1,11 +1,6 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_bloc/todo_bloc/presentation/screens/models/signup/user_model.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/theme.dart';
 import 'package:todo_bloc/todo_bloc/shared/widgets/separator_box.dart';
@@ -21,7 +16,7 @@ class _SignupFormState extends State<SignupForm> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    Future<void> procurarNif() async {
+    Future<void> loadingOn() async {
       isLoading = true;
       await Future.delayed(const Duration(seconds: 2));
       setState(() {
@@ -86,7 +81,7 @@ class _SignupFormState extends State<SignupForm> {
           TextButton(
             onPressed: () {
               setState(() {
-                procurarNif();
+                loadingOn();
               });
             },
             child: Row(
@@ -109,8 +104,8 @@ class _SignupFormState extends State<SignupForm> {
               ],
             ),
             style: TextButton.styleFrom(
-              shape:
-                  const RoundedRectangleBorder(borderRadius: Corners.mdBorder),
+              shape: const RoundedRectangleBorder(
+                  borderRadius: AppBorders.mdBorder),
               maximumSize: const Size(360, 50),
               primary: Colors.white,
               enableFeedback: isLoading,

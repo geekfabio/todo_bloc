@@ -30,7 +30,7 @@ class Insets {
   static const double offset = 40;
 }
 
-class Corners {
+class AppBorders {
   static const double sm = 4;
   static const BorderRadius smBorder = BorderRadius.all(smRadius);
   static const Radius smRadius = Radius.circular(sm);

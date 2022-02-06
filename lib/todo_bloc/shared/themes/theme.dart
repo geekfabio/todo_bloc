@@ -29,12 +29,12 @@ class AppTheme {
       hoverColor: LightColor.inputHoverColor,
       errorBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: LightColor.red, width: 2.0),
-        borderRadius: Corners.lgBorder,
+        borderRadius: AppBorders.lgBorder,
       ),
       iconColor: LightColor.lightBlue,
       border: const OutlineInputBorder(
         borderSide: BorderSide(color: LightColor.borderColor, width: 1.2),
-        borderRadius: Corners.mdBorder,
+        borderRadius: AppBorders.mdBorder,
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderSide: const BorderSide(color: LightColor.red, width: 1.5),
@@ -43,7 +43,7 @@ class AppTheme {
       focusedBorder: const OutlineInputBorder(
         borderSide:
             BorderSide(color: LightColor.focusedBorderColor, width: 1.5),
-        borderRadius: Corners.mdBorder,
+        borderRadius: AppBorders.mdBorder,
       ),
     ),
   );
@@ -69,12 +69,12 @@ class AppTheme {
       hoverColor: DarkColor.inputHoverColor,
       errorBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: DarkColor.red, width: 2.0),
-        borderRadius: Corners.lgBorder,
+        borderRadius: AppBorders.lgBorder,
       ),
       iconColor: DarkColor.lightBlue,
       border: const OutlineInputBorder(
         borderSide: BorderSide(color: DarkColor.borderColor, width: 1.2),
-        borderRadius: Corners.mdBorder,
+        borderRadius: AppBorders.mdBorder,
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderSide: const BorderSide(color: DarkColor.red, width: 1.5),
@@ -82,7 +82,7 @@ class AppTheme {
       ),
       focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: DarkColor.focusedBorderColor, width: 1.5),
-        borderRadius: Corners.mdBorder,
+        borderRadius: AppBorders.mdBorder,
       ),
     ),
   );

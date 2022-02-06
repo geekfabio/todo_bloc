@@ -1,6 +1,4 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/src/provider.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/light_color.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
 import 'package:todo_bloc/todo_bloc/shared/widgets/ripple_extension.dart';
@@ -46,22 +44,6 @@ class _SignupPageState extends State<SignupPage> {
               .copyWith(fontWeight: FontWeight.w600),
         ),
         const SeparatorBox.medium(),
-        SizedBox(
-            width: AppTheme.screenWidth(context) / 3.1,
-            child: AnimatedTextKit(
-              animatedTexts: [
-                TypewriterAnimatedText(
-                  'see how TodoBloc can help you continiously improve your cuber securtiy rating, detect exposures and control risk!',
-                  textStyle: Theme.of(context).primaryTextTheme.bodyText1,
-                  speed: TransitionTimes.veryFast,
-                ),
-              ],
-              totalRepeatCount: 4,
-              pause: TransitionTimes.medium,
-              displayFullTextOnTap: true,
-              stopPauseOnTap: false,
-            )),
-        const SeparatorBox.medium(scale: 2),
       ]);
     }
 
@@ -96,55 +78,68 @@ class _SignupPageState extends State<SignupPage> {
             )),
       ],
     );
-    print(AppTheme.screenHeight(context));
     return Scaffold(
       body: SafeArea(
+          child: Container(
+        color: Colors.blueGrey,
+        padding: (AppTheme.screenHeight(context) > 700)
+            ? const EdgeInsets.symmetric(vertical: 50, horizontal: 100)
+            : null,
+        child: ClipRRect(
+          borderRadius: AppBorders.lgBorder,
           child: Row(
-        children: [
-          Expanded(
-              child: Container(
-            color: Theme.of(context).backgroundColor,
-            child: Container(
-              margin: const EdgeInsets.only(left: 40, right: 40, top: 40),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _topText(),
-                  const SignupForm(),
-                  const SeparatorBox.xLarge(),
-                  if (AppTheme.screenHeight(context) > 700)
-                    Flexible(child: SizedBox(width: 360, child: fakeSlideDots))
-                ],
-              ),
-            ),
-          )),
-          if (AppTheme.screenWidth(context) > 700)
-            Expanded(
-                child: Container(
-              decoration:
-                  const BoxDecoration(gradient: LightColor.colorGradientGrey),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/images/signup_ilustration.png",
-                    width: AppTheme.screenWidth(context) / 1.5,
-                    height: AppTheme.screenHeight(context) / 1.5,
-                  ),
-                  const SeparatorBox.xSmall(),
-                  SizedBox(
-                    width: AppTheme.screenWidth(context) / 3.1,
-                    child: const Text(
-                      'see how TodoBloc can help you continiously improve your cuber securtiy rating, detect exposures and control risk!',
-                      textAlign: TextAlign.center,
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.all(50),
+                    color: Theme.of(context).backgroundColor,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 5, right: 0, top: 40),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _topText(),
+                          const SignupForm(),
+                          const SeparatorBox.xLarge(),
+                          if (AppTheme.screenHeight(context) > 700)
+                            Flexible(
+                                child:
+                                    SizedBox(width: 360, child: fakeSlideDots))
+                        ],
+                      ),
                     ),
+                  )),
+              if (AppTheme.screenWidth(context) > 700)
+                Expanded(
+                    child: Container(
+                  width: 300,
+                  decoration: const BoxDecoration(
+                      gradient: LightColor.colorGradientGrey),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/signup_ilustration.png",
+                        width: AppTheme.screenWidth(context) / 1.5,
+                        height: AppTheme.screenHeight(context) / 1.5,
+                      ),
+                      const SeparatorBox.xSmall(),
+                      SizedBox(
+                        width: AppTheme.screenWidth(context) / 3.1,
+                        child: const Text(
+                          'see how TodoBloc can help you continiously improve your cuber securtiy rating, detect exposures and control risk!',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ))
-        ],
+                ))
+            ],
+          ),
+        ),
       )),
     );
   }
