@@ -1,134 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_bloc/todo_bloc/presentation/screens/models/home/todo.dart';
 import 'package:todo_bloc/todo_bloc/presentation/screens/models/todo_model.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
-import 'package:todo_bloc/todo_bloc/shared/themes/theme.dart';
 import 'package:todo_bloc/todo_bloc/shared/widgets/ripple_extension.dart';
-
-class TodoCard extends StatelessWidget {
-  const TodoCard({
-    Key? key,
-    this.isActive = true,
-    required this.email,
-    required this.press,
-  }) : super(key: key);
-
-  final bool isActive;
-  final Email email;
-  final VoidCallback press;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: Insets.lg, vertical: Insets.sm),
-      child: InkWell(
-        onTap: press,
-        child: Stack(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(Insets.lg),
-              decoration: BoxDecoration(
-                color: isActive
-                    ? Theme.of(context).primaryColor
-                    : Theme.of(context).cardColor,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 32,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          //   backgroundImage: AssetImage(email.image),
-                        ),
-                      ),
-                      SizedBox(width: 20 / 2),
-                      Expanded(
-                        child: Text.rich(
-                          TextSpan(
-                            text: "${email.name} \n",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: isActive ? Colors.white : Colors.redAccent,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: email.subject,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText2!
-                                    .copyWith(
-                                      color: isActive
-                                          ? Colors.white
-                                          : Colors.redAccent,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            email.time,
-                            style:
-                                Theme.of(context).textTheme.caption!.copyWith(
-                                      color: isActive ? Colors.white70 : null,
-                                    ),
-                          ),
-                          const SizedBox(height: 5),
-                          if (email.isAttachmentAvailable)
-                            Icon(
-                              Icons.email_sharp,
-                              color: isActive ? Colors.white70 : Colors.grey,
-                            )
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20 / 2),
-                  Text(
-                    email.body,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.caption!.copyWith(
-                          height: 1.5,
-                          color: isActive ? Colors.white70 : null,
-                        ),
-                  )
-                ],
-              ),
-            ),
-            if (!email.isChecked)
-              Positioned(
-                  right: 8,
-                  top: 8,
-                  child: Container(
-                    height: 12,
-                    width: 12,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.red,
-                    ),
-                  )),
-            if (email.tagColor != null)
-              Positioned(
-                left: 8,
-                top: 5,
-                child: Icon(
-                  Icons.ac_unit_outlined,
-                  color: email.tagColor,
-                ),
-              )
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class TodoCard2 extends StatefulWidget {
   const TodoCard2({Key? key, required this.model, required this.isActive})
@@ -157,7 +30,6 @@ class _TodoCard2State extends State<TodoCard2> {
         children: [
           AnimatedContainer(
             duration: AppTransitionTimes.medium,
-            width: !widget.model.isChecked ? 1000 : 300,
             padding: const EdgeInsets.all(Insets.md),
             decoration: BoxDecoration(
                 color: widget.isActive
