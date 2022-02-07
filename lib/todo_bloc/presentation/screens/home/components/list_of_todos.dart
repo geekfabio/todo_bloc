@@ -20,6 +20,15 @@ class _ListOfTodosState extends State<ListOfTodos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        backgroundColor: Theme.of(context).primaryColor,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          //Navigator.push(context, AddTodoPage());
+        },
+      ),
       key: _scaffoldKey,
       drawer: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 250),
@@ -40,7 +49,7 @@ class _ListOfTodosState extends State<ListOfTodos> {
                     child: Row(
                       children: [
                         IconButton(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               left: Insets.lg, right: Insets.xs),
                           icon: const Icon(Icons.menu),
                           onPressed: () {
