@@ -1,3 +1,5 @@
+//TODO escolher se esse codigo continua aqui ou mover para theme app
+
 import 'package:flutter/material.dart';
 
 /// Styles - design system da app.
