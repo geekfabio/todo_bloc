@@ -15,7 +15,7 @@ class Responsive extends StatelessWidget {
       required this.desktop})
       : super(key: key);
 
-  //TODO choose if this code continue here or move in theme or style app
+  //TODO choose if this code continue here or move in theme
   static bool isMobile(BuildContext context) =>
       AppTheme.screenWidth(context) < 650;
   static bool isTablet(BuildContext context) =>
