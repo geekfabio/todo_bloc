@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:todo_bloc/todo_bloc/presentation/components/menu/menu.dart';
 import 'package:todo_bloc/todo_bloc/presentation/screens/home/components/todo_card.dart';
 import 'package:todo_bloc/todo_bloc/presentation/screens/models/todo_model.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
@@ -22,20 +23,17 @@ class _ListOfTodosState extends State<ListOfTodos> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20))),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
         backgroundColor: Theme.of(context).primaryColor,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.play_arrow),
         onPressed: () {
           //Navigator.push(context, AddTodoPage());
         },
       ),
       key: _scaffoldKey,
       drawer: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 250),
-        child: Container(
-          color: Colors.blue,
-        ),
-      ),
+          constraints: const BoxConstraints(maxWidth: 250),
+          child: const Menu()),
       body: Container(
           padding: EdgeInsets.only(top: kIsWeb ? Insets.lg : 0),
           color: Theme.of(context).backgroundColor,
