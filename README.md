@@ -27,6 +27,10 @@ Projeto Todo App - Flutter
 - [ ] Tela de Cadastro,
 - [ ] Gerência de estado com SetState quando não haver regra de negocio 
 - [ ] Gerência de estado com BLOC
+- [ ] Tela Inicial
+- [ ] Tela de splash
+- [ ] Tela da primeira inicializacao
+- [ ] Multi Linguagem
 
 ## Funções do App:
 * Navegar entre telas de Login e Cadastro, Home
@@ -34,6 +38,8 @@ Projeto Todo App - Flutter
 * Remover Tasks
 * Atualizar Tasks
 * Add subtasks
+* Multi Lang
+* Theme Dark and Light
 
 ## Aprendizado:
 * Dart
@@ -49,8 +55,8 @@ Projeto Todo App - Flutter
 * Utilização de *Splash Screen*
 * Firebase Auth para autenticação
 * Firebase Store >> para salvar a lista de Tarefas
-* Uso de Hive para salvar os dados localmente
-* Responsividade para a versão Web
+* Uso de Hive para salvar os dados localmente ou sharedPreferences
+* Responsividade
 
 
 For help getting started with Flutter, view our
