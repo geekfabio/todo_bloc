@@ -23,26 +23,26 @@ class AppTheme {
         subtitle1: titleStyle,
         subtitle2: subTitleStyle,
         bodyText1: const TextStyle(color: LightColor.bodyTextCaption)),
-    inputDecorationTheme: InputDecorationTheme(
+    inputDecorationTheme: const InputDecorationTheme(
       focusColor: LightColor.focusColor,
       fillColor: LightColor.inputFillColor,
       hoverColor: LightColor.inputHoverColor,
-      errorBorder: const OutlineInputBorder(
+      errorBorder: OutlineInputBorder(
         borderSide: BorderSide(color: LightColor.red, width: 2.0),
         borderRadius: AppBorders.lgBorder,
       ),
       iconColor: LightColor.lightBlue,
-      border: const OutlineInputBorder(
-        borderSide: BorderSide(color: LightColor.borderColor, width: 1.2),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: LightColor.borderColor, width: 0.5),
         borderRadius: AppBorders.mdBorder,
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: LightColor.red, width: 1.5),
-        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: LightColor.red, width: 1.0),
+        borderRadius: AppBorders.mdBorder,
       ),
-      focusedBorder: const OutlineInputBorder(
+      focusedBorder: OutlineInputBorder(
         borderSide:
-            BorderSide(color: LightColor.focusedBorderColor, width: 1.5),
+            BorderSide(color: LightColor.focusedBorderColor, width: 1.0),
         borderRadius: AppBorders.mdBorder,
       ),
     ),
