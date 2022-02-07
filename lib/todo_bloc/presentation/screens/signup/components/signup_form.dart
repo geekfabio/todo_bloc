@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_bloc/todo_bloc/cubit/theme_cubit.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/theme.dart';
 import 'package:todo_bloc/todo_bloc/shared/widgets/separator_box.dart';
@@ -39,9 +40,10 @@ class _SignupFormState extends State<SignupForm> {
             ],
           ),
           const SeparatorBox.small(),
-          const TextField(
+          TextField(
             maxLength: 50,
-            decoration: InputDecoration(
+            style: Theme.of(context).primaryTextTheme.bodyText1,
+            decoration: const InputDecoration(
               counterText: "",
               constraints: BoxConstraints(maxWidth: 360, maxHeight: 40),
             ),
@@ -53,10 +55,10 @@ class _SignupFormState extends State<SignupForm> {
             style: Theme.of(context).primaryTextTheme.bodyText1,
           ),
           const SeparatorBox.small(),
-          const TextField(
+          TextField(
             maxLength: 50,
-            obscureText: true,
-            decoration: InputDecoration(
+            style: Theme.of(context).primaryTextTheme.bodyText1,
+            decoration: const InputDecoration(
               counterText: "",
               constraints: BoxConstraints(maxWidth: 360, maxHeight: 40),
             ),
@@ -68,10 +70,10 @@ class _SignupFormState extends State<SignupForm> {
             style: Theme.of(context).primaryTextTheme.bodyText1,
           ),
           const SeparatorBox.small(),
-          TextFormField(
+          TextField(
+            obscureText: true,
             maxLength: 50,
-            key: const Key("field_nif"),
-            onChanged: (String value) {},
+            style: Theme.of(context).primaryTextTheme.bodyText1,
             decoration: const InputDecoration(
               counterText: "",
               constraints: BoxConstraints(maxWidth: 360, maxHeight: 40),
@@ -81,6 +83,8 @@ class _SignupFormState extends State<SignupForm> {
           TextButton(
             onPressed: () {
               setState(() {
+                context.read<ThemeCubit>().changeCurrentTheme();
+
                 loadingOn();
               });
             },

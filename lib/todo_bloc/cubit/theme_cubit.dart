@@ -5,9 +5,15 @@ import 'package:flutter/material.dart';
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(ThemeInitial(ThemeMode.system));
+  ThemeCubit() : super(const ThemeState(mode: ThemeMode.system));
 
-  void togleChange(ThemeMode model) {
-    emit(ThemeInitial(model));
+  //TODO save current theme in Storage
+  //TODO add a combobox on application settings to select current theme
+  void changeCurrentTheme() {
+    if (state.mode == ThemeMode.dark) {
+      emit(const ThemeState(mode: ThemeMode.light));
+    } else {
+      emit(const ThemeState(mode: ThemeMode.dark));
+    }
   }
 }

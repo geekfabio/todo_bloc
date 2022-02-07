@@ -56,12 +56,13 @@ class AppTheme {
     cardTheme: const CardTheme(color: DarkColor.background),
     textTheme: const TextTheme(bodyText1: TextStyle(color: DarkColor.black)),
     iconTheme: const IconThemeData(color: DarkColor.iconColor),
+    primaryIconTheme: const IconThemeData(color: DarkColor.iconColor),
     bottomAppBarColor: DarkColor.background,
     dividerColor: DarkColor.lightGrey,
     primaryTextTheme: TextTheme(
         button: buttonStyle,
-        subtitle1: titleStyle,
-        subtitle2: subTitleStyle,
+        subtitle1: titleStyle.copyWith(color: DarkColor.subTitleTextColor),
+        subtitle2: subTitleStyle.copyWith(color: DarkColor.subTitleTextColor),
         bodyText1: const TextStyle(color: DarkColor.bodyTextCaption)),
     inputDecorationTheme: InputDecorationTheme(
       focusColor: DarkColor.focusColor,
@@ -73,7 +74,7 @@ class AppTheme {
       ),
       iconColor: DarkColor.lightBlue,
       border: const OutlineInputBorder(
-        borderSide: BorderSide(color: DarkColor.borderColor, width: 1.2),
+        borderSide: BorderSide(color: DarkColor.lightblack, width: 1.2),
         borderRadius: AppBorders.mdBorder,
       ),
       focusedErrorBorder: OutlineInputBorder(

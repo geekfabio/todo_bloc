@@ -9,12 +9,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ThemeCubit(),
+      create: (_) => ThemeCubit(),
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return MaterialApp(
             theme: AppTheme.lightTheme,
-            // themeMode: context.read<ThemeCubit>().state,
+            themeMode: context.select((ThemeCubit cubit) => cubit.state.mode),
             darkTheme: AppTheme.darkTheme,
             title: 'Autocompletar form com NIF/ID',
             home: const SignupPage(),

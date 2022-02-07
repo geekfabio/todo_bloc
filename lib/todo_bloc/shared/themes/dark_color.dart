@@ -16,6 +16,7 @@ class DarkColor {
   static const Color focusedBorderColor = lightBlue;
   static const Color focusColor = primaryColor;
   static const Color inputFillColor = Color(0xFFF2F6FC);
+  static const Color inputTextColor = Color(0xFFF2F6FC);
   static const Color inputHoverColor = Color(0xFFF2F6FC);
   static const LinearGradient colorGradientGrey = LinearGradient(
     begin: Alignment.bottomLeft,
@@ -32,7 +33,7 @@ class DarkColor {
   static const Color lightGrey = Color(0xffE1E2E4);
   static const Color grey = Color(0xffA1A3A6);
   static const Color darkgrey = Color(0xff747F8F);
-  static const Color iconColor = Color(0xff20262C);
+  static const Color iconColor = Color(0xFFE7F0FB);
   static const Color yellowColor = Color(0xfffbba01);
   static const Color black = Color(0xff20262C);
   static const Color lightblack = Color(0xff5F5F60);
