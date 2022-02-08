@@ -17,10 +17,29 @@ class TodoNavBar extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Container(
+            padding: const EdgeInsets.symmetric(
+                horizontal: Insets.lg, vertical: Insets.xs),
             color: Theme.of(context).scaffoldBackgroundColor,
             child: Column(
               children: [
                 TodoContent(),
+                //TODO componetizar aqui
+                SizedBox(
+                    height: 20,
+                    child: Row(
+                      children: const [
+                        //TODO implementar
+                        Expanded(
+                            child: Placeholder(
+                          color: Colors.green,
+                        )),
+                        Expanded(
+                            child: Placeholder(
+                          color: Colors.blue,
+                        ))
+                      ],
+                    )),
+
                 Container(
                   padding: const EdgeInsets.only(bottom: 15),
                   decoration: BoxDecoration(
@@ -50,74 +69,66 @@ class TodoContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: Insets.lg, vertical: Insets.xs),
-      child: Stack(
-        children: [
-          Row(
-            children: <Widget>[
-              // check box To change when complete task
-              Align(
-                alignment: AlignmentDirectional.center,
-                heightFactor: 0,
-                child: AnimatedContainer(
-                    duration: AppTransitionTimes.medium,
-                    curve: Curves.bounceInOut,
-                    margin: const EdgeInsets.only(left: 0),
-                    height: 20.0,
-                    width: 20.0,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: Colors.white,
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 0.51,
+    return Stack(
+      children: [
+        Row(
+          children: <Widget>[
+            // check box To change when complete task
+            Align(
+              alignment: AlignmentDirectional.center,
+              heightFactor: 0,
+              child: AnimatedContainer(
+                  duration: AppTransitionTimes.medium,
+                  curve: Curves.bounceInOut,
+                  margin: const EdgeInsets.only(left: 0),
+                  height: 20.0,
+                  width: 20.0,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 0.51,
+                    ),
+                  ),
+                  child: //widget.model.isChecked ?
+                      Center(
+                    child: Icon(Icons.check,
+                        size: 14.0, color: Theme.of(context).primaryColor),
+                  )
+                  // : Container(),
+                  ).ripple(() {}),
+            ),
+
+            // text
+            Flexible(
+              fit: FlexFit.loose,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    flex: 6,
+                    child: TextField(
+                      minLines: 1,
+                      maxLines: 3,
+                      onChanged: (value) {},
+                      decoration: InputDecoration(
+                        fillColor: Theme.of(context).scaffoldBackgroundColor,
+                        hintText: "Edit a task",
+                        filled: true,
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
                       ),
                     ),
-                    child: //widget.model.isChecked ?
-                        Center(
-                      child: Icon(Icons.check,
-                          size: 14.0, color: Theme.of(context).primaryColor),
-                    )
-                    // : Container(),
-                    ).ripple(() {}),
+                  ),
+                  //  if (widget.model.tag != null)
+                ],
               ),
-
-              // text
-              Flexible(
-                fit: FlexFit.loose,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      flex: 6,
-                      child: TextField(
-                        minLines: 1,
-                        maxLines: 3,
-                        onChanged: (value) {},
-                        decoration: InputDecoration(
-                          fillColor: Theme.of(context).scaffoldBackgroundColor,
-                          hintText: "Edit a task",
-                          filled: true,
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 6,
-                    ),
-
-                    //  if (widget.model.tag != null)
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
