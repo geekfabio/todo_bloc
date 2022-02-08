@@ -4,7 +4,7 @@ import 'package:todo_bloc/my_app.dart';
 
 void main() {
   BlocOverrides.runZoned(
-    () => runApp(MyApp()),
+    () => runApp(const MyApp()),
     blocObserver: AppBlocObserver(),
   );
 }

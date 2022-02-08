@@ -9,7 +9,7 @@ class MenuItemCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
           color: Theme.of(context).primaryColor.withOpacity(0.8),
           borderRadius: BorderRadius.circular(9)),

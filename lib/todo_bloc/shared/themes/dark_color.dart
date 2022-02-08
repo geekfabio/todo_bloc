@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class DarkColor {
   static const Color primaryColor = Color(0xFF1758C1);
   static const Color splashBackground = Color(0xff20262C);
-  static const Color background = Color(0xff20262C);
+  static const Color background = Color(0xff252525);
 
   //text colors
   static const Color titleTextColor = Color(0XFFFFFFFF);

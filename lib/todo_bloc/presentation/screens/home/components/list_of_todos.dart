@@ -18,12 +18,28 @@ class ListOfTodos extends StatefulWidget {
 class _ListOfTodosState extends State<ListOfTodos> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  late ScrollController _todosScrollController = ScrollController();
+  late ScrollController _formTodoScrollController;
+
+  @override
+  void initState() {
+    _todosScrollController = ScrollController();
+    _formTodoScrollController = ScrollController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _todosScrollController.dispose();
+    _formTodoScrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))),
+        shape: const RoundedRectangleBorder(borderRadius: AppBorders.lgBorder),
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.play_arrow),
         onPressed: () {
@@ -89,19 +105,16 @@ class _ListOfTodosState extends State<ListOfTodos> {
                 const SizedBox(
                   height: Insets.lg,
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: Insets.lg),
-                    child: TextField(
-                      onChanged: (value) {},
-                      decoration: const InputDecoration(
-                        hintText: "Add a task, press [enter]",
-                        filled: true,
-                        suffixIcon: Padding(
-                            padding: EdgeInsets.all(20 * 0.75), //15
-                            child: Icon(CupertinoIcons.add)),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: Insets.lg),
+                  child: TextField(
+                    onChanged: (value) {},
+                    decoration: const InputDecoration(
+                      hintText: "Add a task, press [enter]",
+                      filled: true,
+                      suffixIcon: Padding(
+                          padding: EdgeInsets.all(20 * 0.75), //15
+                          child: Icon(CupertinoIcons.add)),
                     ),
                   ),
                 ),

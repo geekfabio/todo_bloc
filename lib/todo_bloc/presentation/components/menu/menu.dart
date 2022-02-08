@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_bloc/todo_bloc/presentation/components/tags/tags_widget.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -17,10 +18,10 @@ class Menu extends StatelessWidget {
     return Container(
       height: double.infinity,
       padding: EdgeInsets.only(top: kIsWeb ? Insets.lg : 0),
-      color: Colors.white,
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: Insets.lg),
+          padding: const EdgeInsets.symmetric(horizontal: Insets.lg),
           child: Column(
             children: [
               Row(
@@ -31,14 +32,14 @@ class Menu extends StatelessWidget {
                   // ),
                   const Spacer(),
                   // Hide closeButton on Desktop
-                  if (!Responsive.isDesktop(context)) CloseButton(),
+                  if (!Responsive.isDesktop(context)) const CloseButton(),
                 ],
               ),
-              SizedBox(height: Insets.lg),
+              const SizedBox(height: Insets.lg),
               //TODO here
-              SizedBox(height: Insets.lg),
+              const SizedBox(height: Insets.lg),
               //TODO here
-              SizedBox(height: Insets.lg * 2),
+              const SizedBox(height: Insets.lg * 2),
 
               // Menu Items
               MenuItem(
@@ -83,9 +84,8 @@ class Menu extends StatelessWidget {
                 showBorder: true,
                 iconColor: Theme.of(context).primaryColor,
               ),
-              const SizedBox(height: Insets.lg * 2),
-              // Tags
-              //   Tags(),
+
+              const Tags(),
             ],
           ),
         ),

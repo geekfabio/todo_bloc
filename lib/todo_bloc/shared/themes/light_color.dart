@@ -4,7 +4,7 @@ class LightColor {
   ///Theme light
   static const Color primaryColor = Color(0xFF1758C1);
   static const Color splashBackground = Color(0XFFFFFFFF);
-  static const Color background = Color(0xFFF7F7F9);
+  static const Color background = Color(0xFFF0F0F0);
 
   //text colors
   static const Color titleTextColor = Color(0xFF2D333A);

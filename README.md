@@ -2,8 +2,6 @@
 
 Projeto Todo App - Flutter
 
-
-
 ## Descrição
 
 
@@ -33,29 +31,28 @@ Projeto Todo App - Flutter
 - [ ] Multi Linguagem
 
 ## Funções do App:
-* Navegar entre telas de Login e Cadastro, Home
 * Adicionar Tasks
 * Remover Tasks
 * Atualizar Tasks
 * Add subtasks
+* Criar pastas e Tags para organizar as tarefas
 * Multi Lang
 * Theme Dark and Light
 
 ## Aprendizado:
 * Dart
 * Flutter
-* Validação de formulários com animações
 * Clean Code
 * Aprimorando o Bloc 
-* Entender o Hive
 * Aprimorar o ThemeLight e ThemeDark
 * Responsividade <- principal
+* Uso de internacionalizacão 110N para multi-lang
 
 ## Próximos passos:
 * Utilização de *Splash Screen*
 * Firebase Auth para autenticação
-* Firebase Store >> para salvar a lista de Tarefas
-* Uso de Hive para salvar os dados localmente ou sharedPreferences
+* Firebase >> para salvar a lista de Tarefas
+* Uso de Hive ou sharedPreferences para salvar os dados localmente ou 
 * Responsividade
 
 

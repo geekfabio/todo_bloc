@@ -25,11 +25,11 @@ class _TodoCard2State extends State<TodoCard2> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: Insets.lg, vertical: Insets.xs),
+      padding: const EdgeInsets.symmetric(
+          horizontal: Insets.lg, vertical: Insets.xs),
       child: Stack(
         children: [
-          AnimatedContainer(
-            duration: AppTransitionTimes.medium,
+          Container(
             padding: const EdgeInsets.all(Insets.md),
             decoration: BoxDecoration(
                 color: widget.isActive
@@ -40,9 +40,7 @@ class _TodoCard2State extends State<TodoCard2> {
             child: Row(
               children: <Widget>[
                 // check box To change when complete task
-                AnimatedContainer(
-                  duration: AppTransitionTimes.medium,
-                  curve: Curves.bounceInOut,
+                Container(
                   margin: const EdgeInsets.only(left: 0),
                   height: 20.0,
                   width: 20.0,

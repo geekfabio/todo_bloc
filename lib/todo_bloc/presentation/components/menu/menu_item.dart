@@ -32,11 +32,11 @@ class MenuItem extends StatelessWidget {
         child: Row(
           children: [
             (isActive || isHover)
-                ? Icon(
+                ? const Icon(
                     Icons.arrow_downward,
                     size: 15,
                   )
-                : SizedBox(width: 15),
+                : const SizedBox(width: 15),
             const SizedBox(width: Insets.sm),
             Expanded(
               child: Container(
@@ -45,7 +45,7 @@ class MenuItem extends StatelessWidget {
                     ? BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
-                              color: Theme.of(context).disabledColor),
+                              color: Theme.of(context).backgroundColor),
                         ),
                       )
                     : null,
@@ -56,7 +56,7 @@ class MenuItem extends StatelessWidget {
                       color: iconColor,
                       size: 20,
                     ),
-                    SizedBox(width: Insets.lg * 0.75),
+                    const SizedBox(width: Insets.lg * 0.75),
                     Text(
                       title,
                       style: Theme.of(context).textTheme.button!.copyWith(
@@ -65,8 +65,8 @@ class MenuItem extends StatelessWidget {
                                 : Colors.grey,
                           ),
                     ),
-                    Spacer(),
-                    if (itemCount != 0) MenuItemCount(count: itemCount)
+                    const Spacer(),
+                    if (itemCount != 0) MenuItemCount(count: itemCount),
                   ],
                 ),
               ),
