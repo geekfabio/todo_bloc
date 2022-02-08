@@ -126,18 +126,13 @@ class _ListOfTodosState extends State<ListOfTodos> {
                       ),
                       Expanded(
                         flex: 4,
-                        child: Scrollbar(
-                          controller: _scrollController,
-                          interactive: true,
-                          isAlwaysShown: true,
-                          child: ListView.builder(
-                            itemCount: todos.length,
-                            itemBuilder: (context, index) => TodoCard2(
-                              isActive: Responsive.isMobile(context)
-                                  ? false
-                                  : index == 0,
-                              model: todos[index],
-                            ),
+                        child: ListView.builder(
+                          itemCount: todos.length,
+                          itemBuilder: (context, index) => TodoCard2(
+                            isActive: Responsive.isMobile(context)
+                                ? false
+                                : index == 0,
+                            model: todos[index],
                           ),
                         ),
                       ),
