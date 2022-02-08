@@ -49,10 +49,282 @@ List<TodoModel> todos = List.generate(
     isChecked: demo_data[index]['isChecked'],
     color: demo_data[index]['tagColor'],
     dateFinish: demo_data[index]['time'],
-    dateCreated: emailDemoText,
+    dateCreated: "Today",
   ),
 );
+
+//add more itens to test responsivity
 List demo_data = [
+  {
+    "name": "Apple",
+    "image": TagModel(title: "Software", color: Colors.purple),
+    "subject": "iPhone 12 is here",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "Now"
+  },
+  {
+    "name": "Elvia Atkins",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Inspiration for our new home",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "15:32"
+  },
+  {
+    "name": "Marvin Kiehn",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Business-focused empowering the world",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "14:27",
+  },
+  {
+    "name": "Domenic Bosco",
+    "image": TagModel(title: "Green", color: Colors.green),
+    "subject": "The fastest way to Design",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "10:43"
+  },
+  {
+    "name": "Elenor Bauch",
+    "image": null,
+    "subject": "New job opportunities",
+    "isAttachmentAvailable": false,
+    "isChecked": false,
+    "tagColor": Color(0xFF3A6FF7),
+    "time": "9:58"
+  },
+  {
+    "name": "Apple",
+    "image": TagModel(title: "Software", color: Colors.purple),
+    "subject": "iPhone 12 is here",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "Now"
+  },
+  {
+    "name": "Elvia Atkins",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Inspiration for our new home",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "15:32"
+  },
+  {
+    "name": "Marvin Kiehn",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Business-focused empowering the world",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "14:27",
+  },
+  {
+    "name": "Domenic Bosco",
+    "image": TagModel(title: "Green", color: Colors.green),
+    "subject": "The fastest way to Design",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "10:43"
+  },
+  {
+    "name": "Elenor Bauch",
+    "image": null,
+    "subject": "New job opportunities",
+    "isAttachmentAvailable": false,
+    "isChecked": false,
+    "tagColor": Color(0xFF3A6FF7),
+    "time": "9:58"
+  },
+  {
+    "name": "Apple",
+    "image": TagModel(title: "Software", color: Colors.purple),
+    "subject": "iPhone 12 is here",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "Now"
+  },
+  {
+    "name": "Elvia Atkins",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Inspiration for our new home",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "15:32"
+  },
+  {
+    "name": "Marvin Kiehn",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Business-focused empowering the world",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "14:27",
+  },
+  {
+    "name": "Domenic Bosco",
+    "image": TagModel(title: "Green", color: Colors.green),
+    "subject": "The fastest way to Design",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "10:43"
+  },
+  {
+    "name": "Elenor Bauch",
+    "image": null,
+    "subject": "New job opportunities",
+    "isAttachmentAvailable": false,
+    "isChecked": false,
+    "tagColor": Color(0xFF3A6FF7),
+    "time": "9:58"
+  },
+  {
+    "name": "Apple",
+    "image": TagModel(title: "Software", color: Colors.purple),
+    "subject": "iPhone 12 is here",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "Now"
+  },
+  {
+    "name": "Elvia Atkins",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Inspiration for our new home",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "15:32"
+  },
+  {
+    "name": "Marvin Kiehn",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Business-focused empowering the world",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "14:27",
+  },
+  {
+    "name": "Domenic Bosco",
+    "image": TagModel(title: "Green", color: Colors.green),
+    "subject": "The fastest way to Design",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "10:43"
+  },
+  {
+    "name": "Elenor Bauch",
+    "image": null,
+    "subject": "New job opportunities",
+    "isAttachmentAvailable": false,
+    "isChecked": false,
+    "tagColor": Color(0xFF3A6FF7),
+    "time": "9:58"
+  },
+  {
+    "name": "Apple",
+    "image": TagModel(title: "Software", color: Colors.purple),
+    "subject": "iPhone 12 is here",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "Now"
+  },
+  {
+    "name": "Elvia Atkins",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Inspiration for our new home",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "15:32"
+  },
+  {
+    "name": "Marvin Kiehn",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Business-focused empowering the world",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "14:27",
+  },
+  {
+    "name": "Domenic Bosco",
+    "image": TagModel(title: "Green", color: Colors.green),
+    "subject": "The fastest way to Design",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "10:43"
+  },
+  {
+    "name": "Elenor Bauch",
+    "image": null,
+    "subject": "New job opportunities",
+    "isAttachmentAvailable": false,
+    "isChecked": false,
+    "tagColor": Color(0xFF3A6FF7),
+    "time": "9:58"
+  },
+  {
+    "name": "Apple",
+    "image": TagModel(title: "Software", color: Colors.purple),
+    "subject": "iPhone 12 is here",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "Now"
+  },
+  {
+    "name": "Elvia Atkins",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Inspiration for our new home",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "15:32"
+  },
+  {
+    "name": "Marvin Kiehn",
+    "image": TagModel(title: "Project", color: Colors.red),
+    "subject": "Business-focused empowering the world",
+    "isAttachmentAvailable": true,
+    "isChecked": false,
+    "tagColor": null,
+    "time": "14:27",
+  },
+  {
+    "name": "Domenic Bosco",
+    "image": TagModel(title: "Green", color: Colors.green),
+    "subject": "The fastest way to Design",
+    "isAttachmentAvailable": false,
+    "isChecked": true,
+    "tagColor": Color(0xFF23CF91),
+    "time": "10:43"
+  },
+  {
+    "name": "Elenor Bauch",
+    "image": null,
+    "subject": "New job opportunities",
+    "isAttachmentAvailable": false,
+    "isChecked": false,
+    "tagColor": Color(0xFF3A6FF7),
+    "time": "9:58"
+  },
   {
     "name": "Apple",
     "image": TagModel(title: "Software", color: Colors.purple),
@@ -99,6 +371,3 @@ List demo_data = [
     "time": "9:58"
   }
 ];
-
-String emailDemoText =
-    "Corporis illo provident. Sunt omnis neque et aperiam. Nemo ut dolorum fugit eum sed. Corporis illo provident. Sunt omnis neque et aperiam. Nemo ut dolorum fugit eum sed. Corporis illo provident. Sunt omnis neque et aperiam. Nemo ut dolorum fugit eum sed";

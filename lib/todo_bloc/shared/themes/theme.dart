@@ -52,6 +52,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     splashColor: DarkColor.splashBackground,
     backgroundColor: DarkColor.background,
+    brightness: Brightness.dark,
     primaryColor: DarkColor.primaryColor,
     cardTheme: const CardTheme(color: DarkColor.background),
     textTheme: const TextTheme(bodyText1: TextStyle(color: DarkColor.black)),
