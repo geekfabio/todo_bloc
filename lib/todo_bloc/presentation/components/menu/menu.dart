@@ -85,7 +85,7 @@ class Menu extends StatelessWidget {
                 iconColor: Theme.of(context).primaryColor,
               ),
 
-              const Tags(),
+              // const Tags(),
             ],
           ),
         ),
