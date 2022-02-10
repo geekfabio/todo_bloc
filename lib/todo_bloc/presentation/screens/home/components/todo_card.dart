@@ -3,18 +3,18 @@ import 'package:todo_bloc/todo_bloc/presentation/screens/models/todo_model.dart'
 import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
 import 'package:todo_bloc/todo_bloc/shared/widgets/ripple_extension.dart';
 
-class TodoCard2 extends StatefulWidget {
-  const TodoCard2({Key? key, required this.model, required this.isActive})
+class TodoCard extends StatefulWidget {
+  const TodoCard({Key? key, required this.model, required this.isActive})
       : super(key: key);
   final TodoModel model;
 
   final bool isActive;
 
   @override
-  State<TodoCard2> createState() => _TodoCard2State();
+  State<TodoCard> createState() => _TodoCardState();
 }
 
-class _TodoCard2State extends State<TodoCard2> {
+class _TodoCardState extends State<TodoCard> {
   void completeTask() {
     widget.model.isChecked = !widget.model.isChecked;
     if (widget.model.isChecked) {
@@ -33,7 +33,7 @@ class _TodoCard2State extends State<TodoCard2> {
             padding: const EdgeInsets.all(Insets.md),
             decoration: BoxDecoration(
                 color: widget.isActive
-                    ? Theme.of(context).selectedRowColor
+                    ? Theme.of(context).primaryColor.withOpacity(0.1)
                     : Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: Shadows.small),

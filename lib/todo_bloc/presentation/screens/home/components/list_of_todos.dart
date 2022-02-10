@@ -130,7 +130,7 @@ class _ListOfTodosState extends State<ListOfTodos> {
                         flex: 4,
                         child: ListView.builder(
                           itemCount: todos.length,
-                          itemBuilder: (context, index) => TodoCard2(
+                          itemBuilder: (context, index) => TodoCard(
                             isActive: Responsive.isMobile(context)
                                 ? false
                                 : index == 0,
