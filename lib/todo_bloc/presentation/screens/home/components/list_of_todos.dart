@@ -114,9 +114,11 @@ class _ListOfTodosState extends State<ListOfTodos> {
                               const EdgeInsets.symmetric(horizontal: Insets.lg),
                           child: TextField(
                             onChanged: (value) {},
+                            maxLength: 100,
                             decoration: const InputDecoration(
                               hintText: "Add a task, press [enter]",
                               filled: true,
+                              counterText: "",
                               suffixIcon: Padding(
                                   padding: EdgeInsets.all(20 * 0.75), //15
                                   child: Icon(CupertinoIcons.add)),
