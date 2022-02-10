@@ -12,12 +12,12 @@ class DarkColor {
   static const Color bodyTextCaption = Color(0xFFF9F9F9);
 
   //Input Theme
-  static const Color borderColor = Color(0xFFF9F9F9);
+  static const Color borderColor = Color(0xff747F8F);
   static const Color focusedBorderColor = lightBlue;
   static const Color focusColor = primaryColor;
-  static const Color inputFillColor = Color(0xFFF2F6FC);
-  static const Color inputTextColor = Color(0xFFF2F6FC);
-  static const Color inputHoverColor = Color(0xFFF2F6FC);
+  static const Color inputFillColor = Color(0xff20262C);
+  static const Color inputTextColor = Color(0xff747F8F);
+  static const Color inputHoverColor = Color(0xff252525);
   static const LinearGradient colorGradientGrey = LinearGradient(
     begin: Alignment.bottomLeft,
     end: Alignment.topRight,

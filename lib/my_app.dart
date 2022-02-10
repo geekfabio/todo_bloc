@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: AppTheme.lightTheme,
             //    themeMode: context.select((ThemeCubit cubit) => cubit.state.mode),
-            themeMode: ThemeMode.light,
-            darkTheme: AppTheme.darkTheme,
+            themeMode: ThemeMode.dark,
+            darkTheme: AppTheme.lightTheme,
             title: 'Autocompletar form com NIF/ID',
             home: const HomePage(),
           );
