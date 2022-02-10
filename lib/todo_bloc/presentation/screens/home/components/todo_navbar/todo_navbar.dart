@@ -110,12 +110,14 @@ class TodoContent extends StatelessWidget {
                   Expanded(
                     flex: 6,
                     child: TextField(
+                      maxLength: 100,
                       minLines: 1,
                       maxLines: 3,
                       onChanged: (value) {},
                       decoration: InputDecoration(
                         fillColor: Theme.of(context).scaffoldBackgroundColor,
                         hintText: "Edit a task",
+                        counterText: "",
                         filled: true,
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
