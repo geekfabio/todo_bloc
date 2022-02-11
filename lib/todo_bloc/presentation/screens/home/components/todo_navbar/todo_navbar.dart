@@ -20,11 +20,10 @@ class _TodoNavBarState extends State<TodoNavBar> {
   DateTime selectedDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
-      context: context,
-      firstDate: selectedDate,
-      initialDate: DateTime(2020, 1),
-      lastDate: DateTime(selectedDate.year + 5, 8),
-    );
+        context: context,
+        firstDate: DateTime.now(),
+        initialDate: selectedDate,
+        lastDate: DateTime(2101));
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
@@ -114,20 +113,92 @@ class _TodoNavBarState extends State<TodoNavBar> {
                     ),
                   ),
                 const BorderContainer(),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Text("${selectedDate.toLocal()}".split(' ')[0]),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    RaisedButton(
-                      onPressed: () => _selectDate(context),
-                      child: Text('Select date'),
-                    ),
-                  ],
+                const SizedBox(
+                  height: 10.0,
                 ),
+
+                //DATE PICKER
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Icon(
+                      CupertinoIcons.calendar,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    const SizedBox(
+                      width: Insets.sm,
+                    ),
+                    const Text('Due date'),
+                    const Spacer(),
+                    Text("${selectedDate.toLocal()}".split(' ')[0]),
+                  ],
+                ).ripple(() => _selectDate(context)),
+                //Reminder
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Insets.md),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(
+                        CupertinoIcons.alarm,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      const SizedBox(
+                        width: Insets.sm,
+                      ),
+                      const Text('Reminder'),
+                      const Spacer(),
+                      const Text("None"),
+                    ],
+                  ).ripple(() => _selectDate(context)),
+                ),
+                //TAG
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Icon(
+                      CupertinoIcons.repeat,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    const SizedBox(
+                      width: Insets.sm,
+                    ),
+                    const Text('Repeat'),
+                    const Spacer(),
+                    Text("${selectedDate.toLocal()}".split(' ')[0]),
+                  ],
+                ).ripple(() => _selectDate(context)),
                 const BorderContainer(),
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: TextField(
+                          maxLength: 300,
+                          minLines: 3,
+                          maxLines: 10,
+                          onChanged: (value) {},
+                          decoration: InputDecoration(
+                            fillColor:
+                                Theme.of(context).scaffoldBackgroundColor,
+                            hintText: "Add a note...",
+                            counterText: "",
+                            filled: true,
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -215,7 +286,6 @@ class TodoContent extends StatelessWidget {
                       ),
                     ),
                   ),
-                  //  if (widget.model.tag != null)
                 ],
               ),
             ),
