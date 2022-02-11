@@ -15,7 +15,7 @@ class TodoModel {
   String? path;
   Color? color;
   bool isChecked;
-  List<TaskModel>? subtasks;
+  List<TaskModel>? steps;
   TodoPriority priority;
   TodoModel({
     required this.title,
@@ -26,15 +26,17 @@ class TodoModel {
     this.tag,
     this.path = "",
     this.color = Colors.blue,
-    this.subtasks,
+    this.steps,
     this.priority = TodoPriority.low,
   });
 }
 
 class TaskModel {
   String? title;
+  bool? isPomodoro;
   TaskModel({
     required this.title,
+    this.isPomodoro = false,
   });
 }
 
