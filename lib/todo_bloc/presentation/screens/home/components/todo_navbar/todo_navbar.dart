@@ -22,7 +22,7 @@ class _TodoNavBarState extends State<TodoNavBar> {
     final DateTime? picked = await showDatePicker(
       context: context,
       firstDate: selectedDate,
-      initialDate: DateTime(selectedDate.year, 8),
+      initialDate: DateTime(2020, 1),
       lastDate: DateTime(selectedDate.year + 5, 8),
     );
     if (picked != null && picked != selectedDate) {
