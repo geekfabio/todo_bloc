@@ -1,10 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_bloc/todo_bloc/presentation/screens/home/components/todo_navbar/steps_card.dart';
+import 'package:todo_bloc/todo_bloc/presentation/screens/models/todo_model.dart';
 import 'package:todo_bloc/todo_bloc/shared/themes/style.dart';
+import 'package:todo_bloc/todo_bloc/shared/themes/theme.dart';
+import 'package:todo_bloc/todo_bloc/shared/utils/responsive.dart';
 import 'package:todo_bloc/todo_bloc/shared/widgets/ripple_extension.dart';
 
-class TodoNavBar extends StatelessWidget {
+import '../todo_card.dart';
+
+class TodoNavBar extends StatefulWidget {
   const TodoNavBar({Key? key}) : super(key: key);
+
+  @override
+  State<TodoNavBar> createState() => _TodoNavBarState();
+}
+
+class _TodoNavBarState extends State<TodoNavBar> {
+  DateTime selectedDate = DateTime.now();
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      firstDate: selectedDate,
+      initialDate: DateTime(selectedDate.year, 8),
+      lastDate: DateTime(selectedDate.year + 5, 8),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +43,13 @@ class TodoNavBar extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Container(
+            height: AppTheme.screenHeight(context),
             padding: const EdgeInsets.symmetric(
                 horizontal: Insets.lg, vertical: Insets.xs),
             color: Theme.of(context).scaffoldBackgroundColor,
             child: Column(
               children: [
-                TodoContent(),
+                const TodoContent(),
                 //TODO componetizar aqui
                 SizedBox(
                     height: 20,
@@ -39,25 +66,89 @@ class TodoNavBar extends StatelessWidget {
                         ))
                       ],
                     )),
-
-                Container(
-                  padding: const EdgeInsets.only(bottom: 15),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom:
-                          BorderSide(color: Theme.of(context).backgroundColor),
-                    ),
-                  ),
+                //TODO componetizar aqui
+                const BorderContainer(),
+                const SizedBox(
+                  height: 10,
+                ),
+                Flexible(
+                  fit: FlexFit.loose,
                   child: Row(
-                    children: [
-                      const SizedBox(width: Insets.lg * 0.75),
-                      const Spacer(),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: TextField(
+                          maxLength: 50,
+                          minLines: 1,
+                          maxLines: 1,
+                          onChanged: (value) {},
+                          decoration: InputDecoration(
+                            fillColor:
+                                Theme.of(context).scaffoldBackgroundColor,
+                            hintText: "Add a step",
+                            counterText: "",
+                            filled: true,
+                            suffixIcon: const Icon(
+                              CupertinoIcons.add,
+                              size: 20,
+                            ),
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
+                //TODO here steps List
+                if (todos.length > 0)
+                  Expanded(
+                    flex: 1,
+                    child: ListView.builder(
+                      itemCount: todos.length,
+                      itemBuilder: (context, index) => StepsCard(
+                        model: todos[index],
+                      ),
+                    ),
+                  ),
+                const BorderContainer(),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text("${selectedDate.toLocal()}".split(' ')[0]),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    RaisedButton(
+                      onPressed: () => _selectDate(context),
+                      child: Text('Select date'),
+                    ),
+                  ],
+                ),
+                const BorderContainer(),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class BorderContainer extends StatelessWidget {
+  const BorderContainer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(bottom: 15),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: Theme.of(context).backgroundColor),
         ),
       ),
     );
