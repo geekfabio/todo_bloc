@@ -118,20 +118,40 @@ class _TodoNavBarState extends State<TodoNavBar> {
                 ),
 
                 //DATE PICKER
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Insets.md),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(
+                        CupertinoIcons.calendar,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      const SizedBox(
+                        width: Insets.sm,
+                      ),
+                      const Text('Due date'),
+                      const Spacer(),
+                      Text("${selectedDate.toLocal()}".split(' ')[0]),
+                    ],
+                  ).ripple(() => _selectDate(context)),
+                ),
+                //Project
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Icon(
-                      CupertinoIcons.calendar,
+                      CupertinoIcons.folder,
                       color: Theme.of(context).primaryColor,
                     ),
                     const SizedBox(
                       width: Insets.sm,
                     ),
-                    const Text('Due date'),
+                    const Text('Project'),
                     const Spacer(),
-                    Text("${selectedDate.toLocal()}".split(' ')[0]),
+                    Text("Tasks"),
                   ],
                 ).ripple(() => _selectDate(context)),
                 //Reminder
@@ -168,7 +188,7 @@ class _TodoNavBarState extends State<TodoNavBar> {
                     ),
                     const Text('Repeat'),
                     const Spacer(),
-                    Text("${selectedDate.toLocal()}".split(' ')[0]),
+                    const Text("None"),
                   ],
                 ).ripple(() => _selectDate(context)),
                 const BorderContainer(),
