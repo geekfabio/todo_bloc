@@ -9,26 +9,29 @@ environment:
 
 dependencies:
   animated_text_kit: ^4.2.1
-  bloc: ^8.0.2
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
   equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
   formz: ^0.4.1
+  get_it: ^7.2.0
   http: ^0.13.4
+  kt_dart: ^0.10.0
 
 dev_dependencies:
   bloc_test: ^9.0.2
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
+  mocktail: ^0.2.0
 
 flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  assets:
-     - assets/images/
+  # assets:
+  # - assets/images/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

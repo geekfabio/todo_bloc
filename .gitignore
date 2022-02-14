@@ -51,4 +51,6 @@ lib/clip_rect_form.dart
 
 #plataforms build 
 /windows/
+/ios/
+/android/
 /web/
