@@ -8,36 +8,24 @@ environment:
   sdk: ">=2.15.1 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
- 
-  #Apaarence & animations
   animated_text_kit: ^4.2.1
   cupertino_icons: ^1.0.2
-  
-  #functional programming thingies
   dartz: ^0.10.1
   equatable: ^2.0.3
- 
-  
-  #state managment
+  flutter:
+    sdk: flutter
   flutter_bloc: ^8.0.1
   formz: ^0.4.1
-
-  # Service locator
   get_it: ^7.2.0
-
-  #remote API
   http: ^0.13.4
-
-  
+  kt_dart: ^0.10.0
 
 dev_dependencies:
-  mocktail: ^0.2.0
   bloc_test: ^9.0.2
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
+  mocktail: ^0.2.0
 
 flutter:
   uses-material-design: true
