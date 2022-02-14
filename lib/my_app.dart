@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_bloc/todo_pomodoro/presentation/cubit/theme_cubit.dart';
-import 'package:todo_bloc/todo_pomodoro/presentation/screens/home/home_page.dart';
+import 'package:todo_bloc/features/todo_pomodoro/presentation/cubit/theme_cubit.dart';
+import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/home/home_page.dart';
 
 import 'features/todo_pomodoro/shared/themes/theme.dart';
 
