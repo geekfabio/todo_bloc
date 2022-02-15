@@ -11,7 +11,7 @@ class TodoItem extends Equatable {
   TagModel? tag;
   String? project;
   Color? color;
-  bool isChecked;
+  bool isDone;
   List<TaskModel>? steps;
   TodoPriority priority;
 
@@ -19,7 +19,7 @@ class TodoItem extends Equatable {
     required this.id,
     required this.title,
     required this.dateCreated,
-    required this.isChecked,
+    required this.isDone,
     this.dateFinish = "Today",
     this.dateToStart = "Today",
     this.tag,
@@ -38,7 +38,7 @@ class TodoItem extends Equatable {
       tag!,
       project!,
       color!,
-      isChecked,
+      isDone,
       steps!,
     ];
   }

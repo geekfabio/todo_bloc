@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 abstract class Failure extends Equatable {
+  const Failure([List properties = const <dynamic>[]]) : super();
+
   @override
   List<Object?> get props => [];
 }
@@ -13,14 +15,14 @@ class CacheFailure extends Failure {}
 
 ///Possiveis erros de requisiç]ao da Todo
 class TodoFailure extends Failure {
-  TodoFailure() : super();
+  const TodoFailure() : super();
   factory TodoFailure.unexpected() {
-    return TodoFailure();
+    return const TodoFailure();
   }
   factory TodoFailure.insuficientPermission() {
-    return TodoFailure();
+    return const TodoFailure();
   }
   factory TodoFailure.errorDeleting() {
-    return TodoFailure();
+    return const TodoFailure();
   }
 }
