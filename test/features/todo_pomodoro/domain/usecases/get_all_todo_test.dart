@@ -16,14 +16,11 @@ void main() {
     usecase = GetAllTodo(repository: mockRepositoryTodo);
   });
 
-  const tId = "1";
-
   //generate  a list of TodoItem
-  final tTdodoItem = List.generate(
+  final list = KtList.from(List.generate(
       10,
       (index) => TodoItem(
-          id: "$index", title: "$index", dateCreated: "$index", isDone: true));
-  final list = KtList.from(tTdodoItem);
+          id: "$index", title: "$index", dateCreated: "$index", isDone: true)));
   test("when call getAllTodos return a List of KtList", () async {
     //arrange
     when(() => mockRepositoryTodo.getAllTodos())
