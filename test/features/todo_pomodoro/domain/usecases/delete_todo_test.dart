@@ -2,23 +2,23 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:todo_bloc/core/error/failure.dart';
+import 'package:todo_bloc/core/usecases/usecase.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
-import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/get_todo_by_id.dart';
+import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/delete_todo.dart';
 
 class MockTodoRepository extends Mock implements ITodoRepository {}
 
 void main() {
   late MockTodoRepository mockRepositoryTodo;
-  late GetTodoByID usecase;
+  late DeleteTodo usecase;
 
   setUp(() {
     mockRepositoryTodo = MockTodoRepository();
-    usecase = GetTodoByID(repository: mockRepositoryTodo);
+    usecase = DeleteTodo(repository: mockRepositoryTodo);
   });
 
-  const tId = "1";
-  final tTdodoItem = TodoItem(
+  final tTodoItem = TodoItem(
     id: '1',
     title: 'title',
     dateCreated: 'description',
@@ -28,15 +28,15 @@ void main() {
   test("when call getTodoById return a TodoItem", () async {
     //arrange
 
-    when(() => mockRepositoryTodo.getTodoById(id: tId))
-        .thenAnswer((_) async => Right<Failure, TodoItem>(tTdodoItem));
+    when(() => mockRepositoryTodo.deleteTodo(tTodoItem))
+        .thenAnswer((_) async => Right<Failure, TodoItem>(tTodoItem));
 
     //act
-    final result = await usecase(const Params(id: tId));
+    final result = await usecase(ParamsTodoItem(todo: tTodoItem));
     //assert
 
-    expect(result, Right<Failure, TodoItem>(tTdodoItem));
-    verify(() => mockRepositoryTodo.getTodoById(id: tId));
+    expect(result, Right<Failure, TodoItem>(tTodoItem));
+    verify(() => mockRepositoryTodo.deleteTodo(tTodoItem));
     verifyNoMoreInteractions(mockRepositoryTodo);
   });
 }
