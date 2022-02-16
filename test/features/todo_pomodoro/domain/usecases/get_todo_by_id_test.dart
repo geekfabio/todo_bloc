@@ -1,17 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kt_dart/collection.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:todo_bloc/core/error/failure.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/get_todo_by_id.dart';
 
-class MockTodoRepository extends Mock implements ITodoRepository {}
-
 void main() {
-  //TODO green face kkk
-
   late MockTodoRepository mockRepositoryTodo;
   late GetTodoByID usecase;
 
@@ -32,14 +27,16 @@ void main() {
     //arrange
 
     when(() => mockRepositoryTodo.getTodoById(id: tId))
-        .thenAnswer((_) async => Right<TodoFailure, TodoItem>(tTdodoItem));
+        .thenAnswer((_) async => Right<Failure, TodoItem>(tTdodoItem));
 
     //act
     final result = await usecase(const Params(id: tId));
     //assert
 
-    expect(result, Right<TodoFailure, TodoItem>(tTdodoItem));
+    expect(result, Right<Failure, TodoItem>(tTdodoItem));
     verify(() => mockRepositoryTodo.getTodoById(id: tId));
     verifyNoMoreInteractions(mockRepositoryTodo);
   });
 }
+
+class MockTodoRepository extends Mock implements ITodoRepository {}
