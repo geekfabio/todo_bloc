@@ -8,12 +8,9 @@ class TodoItem extends Equatable {
   String dateCreated;
   String dateFinish;
   String dateToStart;
-  TagModel? tag;
   String? project;
   Color? color;
   bool isDone;
-  List<TaskModel>? steps;
-  TodoPriority priority;
 
   TodoItem({
     required this.id,
@@ -22,11 +19,8 @@ class TodoItem extends Equatable {
     required this.isDone,
     this.dateFinish = "Today",
     this.dateToStart = "Today",
-    this.tag,
     this.project = "",
     this.color = Colors.blue,
-    this.steps,
-    this.priority = TodoPriority.low,
   });
   @override
   List<Object> get props {
@@ -35,35 +29,9 @@ class TodoItem extends Equatable {
       dateCreated,
       dateFinish,
       dateToStart,
-      tag!,
       project!,
       color!,
       isDone,
-      steps!,
     ];
-  }
-}
-
-enum TodoPriority { high, medium, low }
-
-class TaskModel {
-  String? title;
-  bool? isPomodoro;
-  TaskModel({
-    required this.title,
-    this.isPomodoro = false,
-  });
-}
-
-class TagModel {
-  String title;
-  Color color;
-  TagModel({
-    required this.title,
-    this.color = Colors.blue,
-  });
-
-  factory TagModel.empty() {
-    return TagModel(title: "none");
   }
 }
