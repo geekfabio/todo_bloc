@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/collection.dart';
-import 'package:todo_bloc/core/error/failure.dart';
-import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart';
+
+import '../../../../core/error/failure.dart';
+import '../entities/todo_item.dart';
 
 abstract class ITodoRepository {
   Future<Either<Failure, TodoItem>> getTodoById({required String id});
