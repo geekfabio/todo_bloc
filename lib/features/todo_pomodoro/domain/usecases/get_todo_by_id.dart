@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:todo_bloc/core/error/failure.dart';
-import 'package:todo_bloc/core/usecases/usecase.dart';
-import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart';
-import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
+
+import '../../../../core/error/failure.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../entities/todo_item.dart';
+import '../repositories/todo_repository.dart';
 
 class GetTodoByID implements UseCase<TodoItem, Params> {
   final ITodoRepository repository;
@@ -11,7 +12,7 @@ class GetTodoByID implements UseCase<TodoItem, Params> {
 
   @override
   Future<Either<Failure, TodoItem>> call(Params params) async =>
-      repository.getTodoById(id: params.id);
+      await repository.getTodoById(id: params.id);
 }
 
 class Params extends Equatable {

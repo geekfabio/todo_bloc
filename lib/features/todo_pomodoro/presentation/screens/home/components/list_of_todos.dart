@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/material.dart';
 import 'package:todo_bloc/features/todo_pomodoro/presentation/components/menu/menu.dart';
 import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/models/todo_model.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/themes/theme.dart';
@@ -52,6 +52,7 @@ class _ListOfTodosState extends State<ListOfTodos> {
           Expanded(
             flex: 5,
             child: Container(
+                // ignore: prefer_const_constructors
                 padding: EdgeInsets.only(top: kIsWeb ? Insets.lg : 0),
                 color: Theme.of(context).backgroundColor,
                 child: SafeArea(
