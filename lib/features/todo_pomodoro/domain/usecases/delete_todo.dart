@@ -9,7 +9,6 @@ class DeleteTodo implements UseCase<TodoItem, ParamsTodoItem> {
   DeleteTodo({required this.repository});
 
   @override
-  Future<Either<Failure, TodoItem>> call(ParamsTodoItem params) async {
-    return repository.deleteTodo(params.todo);
-  }
+  Future<Either<Failure, TodoItem>> call(ParamsTodoItem params) async =>
+      await repository.deleteTodo(params.todo);
 }
