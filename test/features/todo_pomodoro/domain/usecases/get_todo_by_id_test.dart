@@ -18,7 +18,7 @@ void main() {
   });
 
   const tId = "1";
-  final tTdodoItem = TodoItem(
+  const tTdodoItem = TodoItem(
     id: '1',
     title: 'title',
     dateCreated: 'description',
@@ -29,13 +29,13 @@ void main() {
     //arrange
 
     when(() => mockRepositoryTodo.getTodoById(id: tId))
-        .thenAnswer((_) async => Right<Failure, TodoItem>(tTdodoItem));
+        .thenAnswer((_) async => const Right<Failure, TodoItem>(tTdodoItem));
 
     //act
     final result = await usecase(const Params(id: tId));
     //assert
 
-    expect(result, Right<Failure, TodoItem>(tTdodoItem));
+    expect(result, const Right<Failure, TodoItem>(tTdodoItem));
     verify(() => mockRepositoryTodo.getTodoById(id: tId));
     verifyNoMoreInteractions(mockRepositoryTodo);
   });

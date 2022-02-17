@@ -17,7 +17,7 @@ void main() {
     usecase = AddTodo(repository: mockRepositoryTodo);
   });
 
-  final tTdodoItem = TodoItem(
+  const tTdodoItem = TodoItem(
     id: '1',
     title: 'title',
     dateCreated: 'description',

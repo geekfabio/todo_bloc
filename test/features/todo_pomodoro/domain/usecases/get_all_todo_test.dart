@@ -8,6 +8,8 @@ import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart'
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/get_all_todo.dart';
 
+class MockTodoRepository extends Mock implements ITodoRepository {}
+
 void main() {
   late MockTodoRepository mockRepositoryTodo;
   late GetAllTodo usecase;
@@ -32,5 +34,3 @@ void main() {
     expect(result, Right<Failure, KtList<TodoItem>>(list));
   });
 }
-
-class MockTodoRepository extends Mock implements ITodoRepository {}

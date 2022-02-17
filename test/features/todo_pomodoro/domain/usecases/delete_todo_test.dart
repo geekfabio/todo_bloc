@@ -18,7 +18,7 @@ void main() {
     usecase = DeleteTodo(repository: mockRepositoryTodo);
   });
 
-  final tTodoItem = TodoItem(
+  const tTodoItem = TodoItem(
     id: '1',
     title: 'title',
     dateCreated: 'description',
@@ -29,13 +29,13 @@ void main() {
     //arrange
 
     when(() => mockRepositoryTodo.deleteTodo(tTodoItem))
-        .thenAnswer((_) async => Right<Failure, TodoItem>(tTodoItem));
+        .thenAnswer((_) async => const Right<Failure, TodoItem>(tTodoItem));
 
     //act
-    final result = await usecase(ParamsTodoItem(todo: tTodoItem));
+    final result = await usecase(const ParamsTodoItem(todo: tTodoItem));
     //assert
 
-    expect(result, Right<Failure, TodoItem>(tTodoItem));
+    expect(result, const Right<Failure, TodoItem>(tTodoItem));
     verify(() => mockRepositoryTodo.deleteTodo(tTodoItem));
     verifyNoMoreInteractions(mockRepositoryTodo);
   });
