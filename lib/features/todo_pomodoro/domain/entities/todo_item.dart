@@ -1,18 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class TodoItem extends Equatable {
-  String id;
-  String title;
-  String dateCreated;
-  String dateFinish;
-  String dateToStart;
-  String? project;
-  Color? color;
-  bool isDone;
+  final String id;
+  final String title;
+  final String dateCreated;
+  final String dateFinish;
+  final String dateToStart;
+  final String? project;
+  final Color? color;
+  final bool isDone;
 
-  TodoItem({
+  const TodoItem({
     required this.id,
     required this.title,
     required this.dateCreated,
@@ -25,6 +24,7 @@ class TodoItem extends Equatable {
   @override
   List<Object> get props {
     return [
+      id,
       title,
       dateCreated,
       dateFinish,
