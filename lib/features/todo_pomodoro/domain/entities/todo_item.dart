@@ -18,7 +18,7 @@ class TodoItem extends Equatable {
     required this.isDone,
     this.dateFinish = "Today",
     this.dateToStart = "Today",
-    this.project = "",
+    this.project = "Task",
     this.color = Colors.blue,
   });
   @override
