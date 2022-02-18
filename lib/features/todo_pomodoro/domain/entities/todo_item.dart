@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 class TodoItem extends Equatable {
   final String id;
@@ -8,7 +7,7 @@ class TodoItem extends Equatable {
   final String dateFinish;
   final String dateToStart;
   final String? project;
-  final Color? color;
+//   final Color? color;
   final bool isDone;
 
   const TodoItem({
@@ -19,7 +18,7 @@ class TodoItem extends Equatable {
     this.dateFinish = "Today",
     this.dateToStart = "Today",
     this.project = "Task",
-    this.color = Colors.blue,
+    //   this.color = Colors.blue,
   });
   @override
   List<Object> get props {
@@ -30,7 +29,7 @@ class TodoItem extends Equatable {
       dateFinish,
       dateToStart,
       project!,
-      color!,
+      // Color!,
       isDone,
     ];
   }

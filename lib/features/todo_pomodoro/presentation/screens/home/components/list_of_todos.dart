@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:todo_bloc/features/todo_pomodoro/presentation/components/menu/menu.dart';
-import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/models/todo_model.dart';
+import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/models/todox_model.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/themes/theme.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/utils/responsive.dart';
 
