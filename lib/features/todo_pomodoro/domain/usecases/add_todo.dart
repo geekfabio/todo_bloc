@@ -6,7 +6,7 @@ import '../entities/todo_item.dart';
 import '../repositories/todo_repository.dart';
 
 class AddTodo implements UseCase<bool, TodoItem> {
-  final ITodoRepository repository;
+  final TodoRepository repository;
   AddTodo({required this.repository});
 
   @override
