@@ -7,7 +7,7 @@ import '../entities/todo_item.dart';
 import '../repositories/todo_repository.dart';
 
 class GetAllTodo extends UseCase<KtList<TodoItem>, NoParams> {
-  final ITodoRepository repository;
+  final TodoRepository repository;
   GetAllTodo({required this.repository});
 
   @override
