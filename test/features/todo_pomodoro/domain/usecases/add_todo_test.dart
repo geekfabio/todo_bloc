@@ -6,7 +6,7 @@ import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart'
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/add_todo.dart';
 
-class MockTodoRepository extends Mock implements ITodoRepository {}
+class MockTodoRepository extends Mock implements TodoRepository {}
 
 void main() {
   late MockTodoRepository mockRepositoryTodo;
@@ -24,7 +24,7 @@ void main() {
     isDone: false,
   );
 
-  test("when add a Todo return true", () async {
+  test("when add a TodoItem return true", () async {
     //arrange
 
     when(() => mockRepositoryTodo.addTodo(tTdodoItem))

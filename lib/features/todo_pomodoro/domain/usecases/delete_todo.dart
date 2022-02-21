@@ -5,7 +5,7 @@ import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart'
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 
 class DeleteTodo implements UseCase<TodoItem, ParamsTodoItem> {
-  final ITodoRepository repository;
+  final TodoRepository repository;
   DeleteTodo({required this.repository});
 
   @override

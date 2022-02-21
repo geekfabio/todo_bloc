@@ -7,7 +7,7 @@ import '../entities/todo_item.dart';
 import '../repositories/todo_repository.dart';
 
 class GetTodoByID implements UseCase<TodoItem, Params> {
-  final ITodoRepository repository;
+  final TodoRepository repository;
   const GetTodoByID({required this.repository});
 
   @override

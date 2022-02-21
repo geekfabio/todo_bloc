@@ -6,7 +6,7 @@ import '../entities/todo_item.dart';
 import '../repositories/todo_repository.dart';
 
 class UpdateTodo implements UseCase<TodoItem, ParamsTodoItem> {
-  final ITodoRepository repository;
+  final TodoRepository repository;
   UpdateTodo({required this.repository});
   @override
   Future<Either<Failure, TodoItem>> call(ParamsTodoItem params) async {

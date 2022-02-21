@@ -6,7 +6,7 @@ import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart'
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/get_todo_by_id.dart';
 
-class MockTodoRepository extends Mock implements ITodoRepository {}
+class MockTodoRepository extends Mock implements TodoRepository {}
 
 void main() {
   late MockTodoRepository mockRepositoryTodo;
