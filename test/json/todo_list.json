@@ -6,7 +6,7 @@
     "dateFinish": "1",
     "dateToStart": "1",
     "project": "Task",
-    "isDone": "false"
+    "isDone": false
 },
 {
   "id": "4",
@@ -15,7 +15,7 @@
   "dateFinish": "1",
   "dateToStart": "1",
   "project": "Task",
-  "isDone": "false"
+  "isDone": false
 }
 ,{
   "id": "2",
@@ -24,7 +24,7 @@
   "dateFinish": "1",
   "dateToStart": "1",
   "project": "Task",
-  "isDone": "false"
+  "isDone": false
 }
 ,{
   "id": "3",
@@ -33,7 +33,7 @@
   "dateFinish": "1",
   "dateToStart": "1",
   "project": "Task",
-  "isDone": "true"
+  "isDone": true
 }
 ,{
   "id": "3",
@@ -42,7 +42,7 @@
   "dateFinish": "1",
   "dateToStart": "1",
   "project": "Task",
-  "isDone": "true"
+  "isDone": true
 },{
   "id": "6",
   "title": "title 5",
@@ -50,6 +50,6 @@
   "dateFinish": "1",
   "dateToStart": "1",
   "project": "Task",
-  "isDone": "true"
+  "isDone": true
 }
 ]
