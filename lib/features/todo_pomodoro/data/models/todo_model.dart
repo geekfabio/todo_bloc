@@ -1,7 +1,7 @@
-import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart';
+import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
 
 //TODO implement Color when study this from Json
-class TodoModel extends TodoItem {
+class TodoModel extends TodoEntity {
   const TodoModel(
       {required String id,
       required String title,
