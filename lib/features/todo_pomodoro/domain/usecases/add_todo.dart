@@ -1,15 +1,14 @@
 import 'package:dartz/dartz.dart';
+import 'package:todo_bloc/core/error/failure.dart';
+import 'package:todo_bloc/core/usecases/usecase.dart';
+import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
+import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/usecases/usecase.dart';
-import '../entities/todo_item.dart';
-import '../repositories/todo_repository.dart';
-
-class AddTodo implements UseCase<bool, TodoItem> {
+class AddTodo implements UseCase<bool, TodoEntity> {
   final TodoRepository repository;
   AddTodo({required this.repository});
 
   @override
-  Future<Either<Failure, bool>> call(TodoItem params) async =>
+  Future<Either<Failure, bool>> call(TodoEntity params) async =>
       await repository.addTodo(params);
 }
