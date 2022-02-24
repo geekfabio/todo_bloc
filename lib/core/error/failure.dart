@@ -10,10 +10,10 @@ abstract class Failure extends Equatable {
 ///Quando o erro vem do servidor
 class ServerFailure extends Failure {}
 
-///Quando o erro é no Cache
+///Quando o erro é no armazenamento Local
 class CacheFailure extends Failure {}
 
-///Possiveis erros de requisiç]ao da Todo
+///Possiveis erros de requisição da Todo
 class TodoFailure extends Failure {
   const TodoFailure() : super();
   factory TodoFailure.unexpected() {
