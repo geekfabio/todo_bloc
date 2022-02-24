@@ -1,4 +1,5 @@
-import 'package:todo_bloc/features/todo_pomodoro/data/models/todo_models.dart';
+import 'package:kt_dart/kt.dart';
+import 'package:todo_bloc/features/todo_pomodoro/data/models/todo_model.dart';
 
 abstract class TodoLocalDataSource {
   Future<bool> addTodo(TodoModel todo) {
@@ -17,7 +18,7 @@ abstract class TodoLocalDataSource {
     return Future.delayed(const Duration(microseconds: 1));
   }
 
-  Future<TodoModel> getAllTodo() {
+  Future<KtList<TodoModel>> getAllTodo() {
     return Future.delayed(const Duration(microseconds: 1));
   }
 }
