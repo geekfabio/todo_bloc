@@ -14,8 +14,8 @@ abstract class TodoLocalDataSource {
     return Future.delayed(const Duration(microseconds: 1));
   }
 
-  Future<TodoModel> getTodoById({required String id}) {
-    return Future.delayed(const Duration(microseconds: 1));
+  Future<TodoModel> getTodoById(String id) {
+    return Future.delayed(const Duration(seconds: 3));
   }
 
   Future<KtList<TodoModel>> getAllTodo() {
