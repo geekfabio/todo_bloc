@@ -1,46 +1,75 @@
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:todo_bloc/core/error/failure.dart';
+import 'package:todo_bloc/core/services/network_info.dart';
 import 'package:todo_bloc/features/todo_pomodoro/data/datasources/local_data_source.dart';
+import 'package:todo_bloc/features/todo_pomodoro/data/models/todo_model.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 
 class TodoRepositoryImpl implements TodoRepository {
   final TodoLocalDataSource localDataSource;
-  TodoRepositoryImpl({required this.localDataSource});
+  final NetworkInfo networkInfo;
+  TodoRepositoryImpl(
+      {required this.networkInfo, required this.localDataSource});
 
   /// add [TodoEntity], on the local cache. Otherwise return a failure
   @override
-  Future<Either<Failure, bool>> addTodo(TodoEntity todo) {
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> addTodo(TodoEntity todo) async {
+    try {
+      final result =
+          await localDataSource.addTodo(TodoModel.fromTodoEntity(todo));
+      return Right<Failure, bool>(result);
+    } on CacheFailure {
+      return Left(CacheFailure());
+    } on Failure {
+      return Left(CacheFailure());
+    }
   }
 
   /// deleteTodo [TodoEntity] on the local cache. Otherwise return a failure
   @override
-  Future<Either<Failure, TodoEntity>> deleteTodo(TodoEntity todo) {
-    // TODO: implement deleteTodo
-    throw UnimplementedError();
+  Future<Either<Failure, TodoEntity>> deleteTodo(TodoEntity todo) async {
+    try {
+      final result =
+          await localDataSource.deleteTodo(TodoModel.fromTodoEntity(todo));
+      return Right<Failure, TodoEntity>(result);
+    } on CacheFailure {
+      return Left<Failure, TodoEntity>(CacheFailure());
+    }
   }
 
-  /// get a list of [TodoEntity]. Otherwise return a failure
+  ///
   @override
-  Future<Either<Failure, KtList<TodoEntity>>> getAllTodos() {
-    // TODO: implement getAllTodos
-    throw UnimplementedError();
+  Future<Either<Failure, KtList<TodoEntity>>> getAllTodos() async {
+    try {
+      final result = await localDataSource.getAllTodo();
+      return Right<Failure, KtList<TodoEntity>>(result);
+    } on CacheFailure {
+      return Left<Failure, KtList<TodoEntity>>(CacheFailure());
+    }
   }
 
-  //TODO refactor this method
-  /// get a item [TodoEntity] by id[String]. Otherwise return a failure
+  /// get a [TodoEntity] by id. Otherwise return a failure
   @override
-  Future<Either<Failure, TodoEntity>> getTodoById({required String id}) {
-    // TODO: implement getTodoById
-    throw UnimplementedError();
+  Future<Either<Failure, TodoEntity>> getTodoById({required String id}) async {
+    try {
+      final result = await localDataSource.getTodoById(id);
+      return Right<Failure, TodoEntity>(result);
+    } on CacheFailure {
+      return Left<Failure, TodoEntity>(CacheFailure());
+    }
   }
 
   /// update a [TodoEntity]. Otherwise return a failure
   @override
-  Future<Either<Failure, TodoEntity>> updateTodo(TodoEntity todo) {
-    // TODO: implement updateTodo
-    throw UnimplementedError();
+  Future<Either<Failure, TodoEntity>> updateTodo(TodoEntity todo) async {
+    try {
+      final result =
+          await localDataSource.updateTodo(TodoModel.fromTodoEntity(todo));
+      return Right<Failure, TodoEntity>(result);
+    } on CacheFailure {
+      return Left<Failure, TodoEntity>(CacheFailure());
+    }
   }
 }
