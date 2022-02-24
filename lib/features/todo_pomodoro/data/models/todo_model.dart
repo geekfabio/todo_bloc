@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
 
 //TODO implement Color when study this from Json
@@ -22,16 +24,46 @@ class TodoModel extends TodoEntity {
           project: project,
           //    color: color,
         );
-  factory TodoModel.fromJson(Map<String, dynamic> json) {
+
+  factory TodoModel.fromMap(Map<String, dynamic> map) {
     return TodoModel(
-      id: json["id"],
-      title: json["title"],
-      dateCreated: json["dateCreated"] ?? '',
-      isDone: json["isDone"] ?? false,
-      dateFinish: json["dateFinish"] ?? '',
-      dateToStart: json["dateToStart"] ?? '',
-      project: json["project"] ?? '',
-      //   color: json["color"] ?? Colors.blue,
+      id: map['id'] ?? '',
+      title: map['title'] ?? '',
+      dateCreated: map['dateCreated'] ?? '',
+      dateFinish: map['dateFinish'] ?? '',
+      dateToStart: map['dateToStart'] ?? '',
+      project: map['project'],
+      isDone: map['isDone'] ?? false,
     );
+  }
+
+  /// cast [TodoEntity] to [TodoModel]
+  factory TodoModel.fromTodoEntity(TodoEntity todoEntity) {
+    return TodoModel(
+      id: todoEntity.id,
+      title: todoEntity.title,
+      dateCreated: todoEntity.dateCreated,
+      dateFinish: todoEntity.dateFinish,
+      dateToStart: todoEntity.dateToStart,
+      project: todoEntity.project ?? 'Task',
+      isDone: todoEntity.isDone,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory TodoModel.fromJson(String source) =>
+      TodoModel.fromMap(json.decode(source));
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'dateCreated': dateCreated,
+      'dateFinish': dateFinish,
+      'dateToStart': dateToStart,
+      'project': project,
+      'isDone': isDone,
+    };
   }
 }
