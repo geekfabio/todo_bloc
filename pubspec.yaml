@@ -11,6 +11,7 @@ dependencies:
   animated_text_kit: ^4.2.1
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
+  data_connection_checker: ^0.3.4
   equatable: ^2.0.3
   flutter:
     sdk: flutter
