@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:todo_bloc/core/error/failure.dart';
 import 'package:todo_bloc/core/services/network_info.dart';
@@ -25,6 +26,7 @@ void main() {
       dateToStart: "1",
       project: "Task",
       isDone: false);
+
   const TodoEntity tTodoEntity = tTodoModel;
 
   setUp(() {
@@ -35,7 +37,7 @@ void main() {
   });
 
   group("Test repository methods", () {
-    test("Deve adicionar TodoModel no LocalDataSource", () async {
+    test("Deve adicionar TodoModel do LocalDataSource", () async {
       //arrange
       when(() => mockLocalDataSource.addTodo(tTodoModel))
           .thenAnswer((_) async => true);
@@ -46,7 +48,7 @@ void main() {
       verify(() => mockLocalDataSource.addTodo(tTodoModel)).called(1);
       verifyNoMoreInteractions(mockLocalDataSource);
     });
-    test("Deve remover uma TodoModel no LocalDataSource", () async {
+    test("Deve remover uma TodoModel do LocalDataSource", () async {
       //arrange
       when(() => mockLocalDataSource.deleteTodo(tTodoModel))
           .thenAnswer((_) async => tTodoModel);
@@ -58,7 +60,7 @@ void main() {
       verifyNoMoreInteractions(mockLocalDataSource);
     });
 
-    test("Deve atualizar uma TodoModel no LocalDataSource", () async {
+    test("Deve atualizar uma TodoModel do LocalDataSource", () async {
       //arrange
       when(() => mockLocalDataSource.updateTodo(tTodoModel))
           .thenAnswer((_) async => tTodoModel);
@@ -70,9 +72,49 @@ void main() {
       verify(() => mockLocalDataSource.updateTodo(tTodoModel));
       verifyNoMoreInteractions(mockLocalDataSource);
     });
-
-    test("Test", () {
-      expect(tTodoModel, tTodoEntity);
-    });
   });
+
+  group("Test GetAllTodos cases", () {
+    final listTodo = KtList.from(List.generate(
+        10,
+        (index) => TodoModel(
+            id: "$index",
+            title: "$index",
+            dateCreated: "$index",
+            isDone: true)));
+
+    //Sucess Test
+
+    test("Deve retornar uma lista de TodoModel do LocalDataSource", () async {
+      //arrange
+      when(() => mockLocalDataSource.getAllTodo())
+          .thenAnswer((_) async => (listTodo));
+      //act
+      final result = await todoRepositoryImpl.getAllTodos();
+      //assert
+      expect(result, equals(Right<Failure, KtList<TodoModel>>(listTodo)));
+      verify(() => mockLocalDataSource.getAllTodo());
+      verifyNoMoreInteractions(mockLocalDataSource);
+    });
+    //Failures Test
+  });
+
+  group(
+    "Test getByID cases",
+    () {
+      const tId = "1";
+
+      test("Deve retornar TodoModel quando ser requisitado", () async {
+        when(() => mockLocalDataSource.getTodoById(tId))
+            .thenAnswer((_) async => tTodoModel);
+        //act
+        final result = await todoRepositoryImpl.getTodoById(id: tId);
+        //assert
+        expect(result, equals(const Right<Failure, TodoModel>(tTodoModel)));
+
+        verify(() => mockLocalDataSource.getTodoById(tId));
+        verifyNoMoreInteractions(mockLocalDataSource);
+      });
+    },
+  );
 }
