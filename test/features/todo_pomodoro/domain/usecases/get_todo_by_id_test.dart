@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:todo_bloc/core/error/failure.dart';
-import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart';
+import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/get_todo_by_id.dart';
 
@@ -18,7 +18,7 @@ void main() {
   });
 
   const tId = "1";
-  const tTdodoItem = TodoItem(
+  const tTdodoItem = TodoEntity(
     id: '1',
     title: 'title',
     dateCreated: 'description',
@@ -29,13 +29,13 @@ void main() {
     //arrange
 
     when(() => mockRepositoryTodo.getTodoById(id: tId))
-        .thenAnswer((_) async => const Right<Failure, TodoItem>(tTdodoItem));
+        .thenAnswer((_) async => const Right<Failure, TodoEntity>(tTdodoItem));
 
     //act
     final result = await usecase(const Params(id: tId));
     //assert
 
-    expect(result, const Right<Failure, TodoItem>(tTdodoItem));
+    expect(result, const Right<Failure, TodoEntity>(tTdodoItem));
     verify(() => mockRepositoryTodo.getTodoById(id: tId));
     verifyNoMoreInteractions(mockRepositoryTodo);
   });

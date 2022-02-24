@@ -4,7 +4,7 @@ import 'package:kt_dart/collection.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:todo_bloc/core/error/failure.dart';
 import 'package:todo_bloc/core/usecases/usecase.dart';
-import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart';
+import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/get_all_todo.dart';
 
@@ -22,15 +22,15 @@ void main() {
   //generate  a list of TodoItem
   final list = KtList.from(List.generate(
       10,
-      (index) => TodoItem(
+      (index) => TodoEntity(
           id: "$index", title: "$index", dateCreated: "$index", isDone: true)));
   test("when call getAllTodos return a List of KtList", () async {
     //arrange
     when(() => mockRepositoryTodo.getAllTodos())
-        .thenAnswer((_) async => Right<Failure, KtList<TodoItem>>(list));
+        .thenAnswer((_) async => Right<Failure, KtList<TodoEntity>>(list));
     //act
     final result = await usecase(NoParams());
     //assert
-    expect(result, Right<Failure, KtList<TodoItem>>(list));
+    expect(result, Right<Failure, KtList<TodoEntity>>(list));
   });
 }
