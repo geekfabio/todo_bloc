@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class TodoItem extends Equatable {
+class TodoEntity extends Equatable {
   final String id;
   final String title;
   final String dateCreated;
@@ -10,7 +10,7 @@ class TodoItem extends Equatable {
 //   final Color? color;
   final bool isDone;
 
-  const TodoItem({
+  const TodoEntity({
     required this.id,
     required this.title,
     required this.dateCreated,

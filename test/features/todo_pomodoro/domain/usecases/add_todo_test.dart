@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:todo_bloc/core/error/failure.dart';
-import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_item.dart';
+import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/add_todo.dart';
 
@@ -17,7 +17,7 @@ void main() {
     usecase = AddTodo(repository: mockRepositoryTodo);
   });
 
-  const tTdodoItem = TodoItem(
+  const tTdodoItem = TodoEntity(
     id: '1',
     title: 'title',
     dateCreated: 'description',
@@ -34,8 +34,8 @@ void main() {
     final result = await usecase((tTdodoItem));
     //assert
 
-    expect(result, const Right<Failure, bool>(true));
     verify(() => mockRepositoryTodo.addTodo(tTdodoItem));
     verifyNoMoreInteractions(mockRepositoryTodo);
+    expect(result, const Right<Failure, bool>(true));
   });
 }

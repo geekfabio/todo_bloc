@@ -18,7 +18,12 @@ dependencies:
   formz: ^0.4.1
   get_it: ^7.2.0
   http: ^0.13.4
-  kt_dart: ^0.10.0
+  internet_connection_checker: ^0.0.1+3
+  
+
+  #Study packages [objectbox] or [shared_preferences]
+  objectbox: ^1.4.0
+  shared_preferences: ^2.0.13
 
 dev_dependencies:
   bloc_test: ^9.0.2
