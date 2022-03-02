@@ -27,6 +27,7 @@
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
+.vscode/
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
@@ -42,6 +43,8 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+# G files
+*.g.backup
 
 # Android Studio will place build artifacts here
 /android/app/debug
@@ -51,4 +54,6 @@ lib/clip_rect_form.dart
 
 #plataforms build 
 /windows/
+/ios/
+/android/
 /web/
