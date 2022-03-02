@@ -45,6 +45,7 @@ app.*.symbols
 app.*.map.json
 # G files
 *.g.backup
+*.g.backup.dart
 
 # Android Studio will place build artifacts here
 /android/app/debug

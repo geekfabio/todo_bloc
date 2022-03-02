@@ -26,7 +26,7 @@ class _TodoCardState extends State<TodoCard> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-          horizontal: Insets.lg, vertical: Insets.xs),
+          horizontal: Insets.lg, vertical: Insets.xs - 1.5),
       child: Stack(
         children: [
           Container(
