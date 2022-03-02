@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kt_dart/kt.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:todo_bloc/core/error/failure.dart';
 import 'package:todo_bloc/core/services/network_info.dart';
@@ -75,13 +74,13 @@ void main() {
   });
 
   group("Test GetAllTodos cases", () {
-    final listTodo = KtList.from(List.generate(
+    final listTodo = List.generate(
         10,
         (index) => TodoModel(
             id: "$index",
             title: "$index",
             dateCreated: "$index",
-            isDone: true)));
+            isDone: true));
 
     //Sucess Test
 
@@ -92,7 +91,7 @@ void main() {
       //act
       final result = await todoRepositoryImpl.getAllTodos();
       //assert
-      expect(result, equals(Right<Failure, KtList<TodoModel>>(listTodo)));
+      expect(result, equals(Right<Failure, List<TodoModel>>(listTodo)));
       verify(() => mockLocalDataSource.getAllTodo());
       verifyNoMoreInteractions(mockLocalDataSource);
     });

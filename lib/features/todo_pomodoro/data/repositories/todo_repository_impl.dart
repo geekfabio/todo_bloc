@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:kt_dart/kt.dart';
 import 'package:todo_bloc/core/error/failure.dart';
 import 'package:todo_bloc/core/services/network_info.dart';
 import 'package:todo_bloc/features/todo_pomodoro/data/datasources/local_data_source.dart';
@@ -41,12 +40,12 @@ class TodoRepositoryImpl implements TodoRepository {
 
   ///
   @override
-  Future<Either<Failure, KtList<TodoEntity>>> getAllTodos() async {
+  Future<Either<Failure, List<TodoEntity>>> getAllTodos() async {
     try {
       final result = await localDataSource.getAllTodo();
-      return Right<Failure, KtList<TodoEntity>>(result);
+      return Right<Failure, List<TodoEntity>>(result);
     } on CacheFailure {
-      return Left<Failure, KtList<TodoEntity>>(CacheFailure());
+      return Left<Failure, List<TodoEntity>>(CacheFailure());
     }
   }
 

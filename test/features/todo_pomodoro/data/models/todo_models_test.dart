@@ -68,4 +68,19 @@ void main() {
       },
     );
   });
+
+  test(
+    "Deve converter uma lista de itens TodoModel de Json para uma lista de TodoModel",
+    () async {
+      //arrange
+      final String jsonString = jsonFileReader("todo_list.json");
+
+      //act
+      final parseJson = jsonDecode(jsonString).cast<Map<String, dynamic>>();
+
+      final list = parseJson.map((e) => TodoModel.fromMap(e)).toList();
+      //assert
+      expect(list, isList);
+    },
+  );
 }
