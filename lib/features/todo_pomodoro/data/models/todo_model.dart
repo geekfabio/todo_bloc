@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
 
-//TODO implement Color when study this from Json
 class TodoModel extends TodoEntity {
   const TodoModel(
       {required String id,
@@ -45,7 +44,7 @@ class TodoModel extends TodoEntity {
       dateCreated: todoEntity.dateCreated,
       dateFinish: todoEntity.dateFinish,
       dateToStart: todoEntity.dateToStart,
-      project: todoEntity.project ?? 'Task',
+      project: todoEntity.project,
       isDone: todoEntity.isDone,
     );
   }
