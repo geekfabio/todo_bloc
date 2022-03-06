@@ -9,29 +9,29 @@ abstract class TodoLocalDataSource {
   Future<bool> addTodo(TodoModel todo);
   Future<bool> addListTodo({required TodosListModel todoList});
   Future<TodoModel> updateTodo(TodoModel todo);
-
   Future<TodoModel> deleteTodo(TodoModel todo);
-
   Future<TodoModel> getTodoById(String id);
-
   Future<List<TodoModel>> getAllTodo();
+  Future<List<TodoModel>> getTodoByProject(String project);
 }
 
 class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   final String _sharedKey = "todo_shared_key";
   final SharedPreferences sharedPreferences;
-
-  //!  this is a mock class of ObejctBox for study only
-  // final Box boxObject;
+  // ? Store the List Of TodoModel
+  late List<TodoModel> _listTodoModel;
 
   TodoLocalDataSourceImpl({
     required this.sharedPreferences,
-    // required this.boxObject,
   });
 
   @override
-  Future<bool> addTodo(TodoModel todo) {
-    return sharedPreferences.setString(todo.id, todo.toJson());
+  Future<bool> addTodo(TodoModel todo) async {
+    List<TodoModel> todoModelSaved = await getAllTodo();
+    todoModelSaved.add(todo);
+    //  List<String> iListTodoString = Map.from((TodoModel e) => );
+    todoModelSaved.toList().toString();
+    return sharedPreferences.setStringList(_sharedKey, todoModelSaved);
   }
 
   @override
@@ -74,5 +74,21 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   Future<TodoModel> updateTodo(TodoModel todo) {
     // TODO: implement updateTodo
     throw UnimplementedError();
+  }
+
+  @override
+  Future<List<TodoModel>> getTodoByProject(String project) {
+    //retorna a lista guardada apenas do projeto especificado
+    final result = sharedPreferences.getString(project);
+    if (result != null) {
+      final json = jsonDecode(result);
+      final list = (json as List)
+          .map((e) => TodoModel.fromJson(e))
+          .toList()
+          .cast<TodoModel>();
+      return Future.value(list);
+    } else {
+      return Future.value(List.empty());
+    }
   }
 }
