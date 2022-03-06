@@ -83,6 +83,19 @@ void main() {
             isDone: true));
 
     //Sucess Test
+    test("Deve retornar uma lista de TodoModel se contem o parametro passado",
+        () async {
+      //arrange
+      when(() => mockLocalDataSource.getTodoByProject("Task"))
+          .thenAnswer((_) async => (listTodo));
+      //act
+      final result = await todoRepositoryImpl.getTodoByProject("Task");
+      //assert
+      expect(result, equals(Right<Failure, List<TodoModel>>(listTodo)));
+      verify(() => mockLocalDataSource.getTodoByProject("Task"));
+      verifyNoMoreInteractions(mockLocalDataSource);
+    });
+    //Failures Test
 
     test("Deve retornar uma lista de TodoModel do LocalDataSource", () async {
       //arrange
