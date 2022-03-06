@@ -6,7 +6,7 @@ class TodoEntity extends Equatable {
   final String dateCreated;
   final String dateFinish;
   final String dateToStart;
-  final String? project;
+  final String project;
 //   final Color? color;
   final bool isDone;
 
@@ -28,7 +28,7 @@ class TodoEntity extends Equatable {
       dateCreated,
       dateFinish,
       dateToStart,
-      project!,
+      project,
       // Color!,
       isDone,
     ];
