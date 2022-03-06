@@ -71,4 +71,15 @@ class TodoRepositoryImpl implements TodoRepository {
       return Left<Failure, TodoEntity>(CacheFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, List<TodoEntity>>> getTodoByProject(
+      String project) async {
+    try {
+      final result = await localDataSource.getAllTodo();
+      return Right<Failure, List<TodoEntity>>(result);
+    } on CacheFailure {
+      return Left<Failure, List<TodoEntity>>(CacheFailure());
+    }
+  }
 }
