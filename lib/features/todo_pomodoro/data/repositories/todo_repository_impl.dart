@@ -28,13 +28,13 @@ class TodoRepositoryImpl implements TodoRepository {
 
   /// deleteTodo [TodoEntity] on the local cache. Otherwise return a failure
   @override
-  Future<Either<Failure, TodoEntity>> deleteTodo(TodoEntity todo) async {
+  Future<Either<Failure, bool>> deleteTodo(TodoEntity todo) async {
     try {
       final result =
           await localDataSource.deleteTodo(TodoModel.fromTodoEntity(todo));
-      return Right<Failure, TodoEntity>(result);
+      return Right<Failure, bool>(result);
     } on CacheFailure {
-      return Left<Failure, TodoEntity>(CacheFailure());
+      return Left<Failure, bool>(CacheFailure());
     }
   }
 
@@ -62,13 +62,13 @@ class TodoRepositoryImpl implements TodoRepository {
 
   /// update a [TodoEntity]. Otherwise return a failure
   @override
-  Future<Either<Failure, TodoEntity>> updateTodo(TodoEntity todo) async {
+  Future<Either<Failure, bool>> updateTodo(TodoEntity todo) async {
     try {
       final result =
           await localDataSource.updateTodo(TodoModel.fromTodoEntity(todo));
-      return Right<Failure, TodoEntity>(result);
+      return Right<Failure, bool>(result);
     } on CacheFailure {
-      return Left<Failure, TodoEntity>(CacheFailure());
+      return Left<Failure, bool>(CacheFailure());
     }
   }
 

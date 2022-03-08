@@ -50,7 +50,7 @@ void main() {
     test("Deve remover uma TodoModel do LocalDataSource", () async {
       //arrange
       when(() => mockLocalDataSource.deleteTodo(tTodoModel))
-          .thenAnswer((_) async => tTodoModel);
+          .thenAnswer((_) async => true);
       //act
       final result = await todoRepositoryImpl.deleteTodo(tTodoModel);
       //assert
@@ -62,7 +62,7 @@ void main() {
     test("Deve atualizar uma TodoModel do LocalDataSource", () async {
       //arrange
       when(() => mockLocalDataSource.updateTodo(tTodoModel))
-          .thenAnswer((_) async => tTodoModel);
+          .thenAnswer((_) async => true);
       //act
       final result = await todoRepositoryImpl.updateTodo(tTodoModel);
       //assert

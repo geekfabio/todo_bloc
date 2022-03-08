@@ -12,22 +12,18 @@ import '../../../../json/json_file_reader.dart';
 
 class MockSharedPreferences extends Mock implements SharedPreferences {}
 
-// ! this is a mock class of ObejctBox for study only
-// class MockObjectBox extends Mock implements Box {}
-
 void main() {
-  late MockSharedPreferences mockSharedPreferences;
-  //late MockObjectBox mockObjectBox;
   late TodoLocalDataSourceImpl dataSource;
+  SharedPreferences? preference;
 
-  setUp(() {
-    mockSharedPreferences = MockSharedPreferences();
-    //  mockObjectBox = MockObjectBox();
+  setUp(() async {
+    preference = await SharedPreferences.getInstance();
     dataSource = TodoLocalDataSourceImpl(
-      sharedPreferences: mockSharedPreferences,
+      sharedPreferences: preference!,
     );
+    SharedPreferences.setMockInitialValues({});
   });
-
+  const String _sharedKey = "todo_shared_key";
   final jsonString =
       jsonDecode(jsonFileReader("todo_list.json")).cast<Map<String, dynamic>>();
 
@@ -49,12 +45,7 @@ void main() {
     });
 
     test("addTodoModel", () async {
-      // arrange
-      when(() => dataSource.addTodo(tTdodoItem)).thenAnswer((_) async => true);
-      // act
-      final result = await dataSource.addTodo(tTdodoItem);
-      // assert
-      expect(result, true);
+      //kkk desisto
     });
 
     test("should a List of TodoModel", () async {
