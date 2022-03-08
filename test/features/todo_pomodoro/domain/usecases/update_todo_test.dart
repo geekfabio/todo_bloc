@@ -29,13 +29,13 @@ void main() {
     //arrange
 
     when(() => mockRepositoryTodo.updateTodo(tTodoItem))
-        .thenAnswer((_) async => const Right<Failure, TodoEntity>(tTodoItem));
+        .thenAnswer((_) async => const Right<Failure, bool>(true));
 
     //act
     final result = await usecase(const ParamsTodoItem(todo: tTodoItem));
     //assert
 
-    expect(result, const Right<Failure, TodoEntity>(tTodoItem));
+    expect(result, const Right<Failure, bool>(true));
     verify(() => mockRepositoryTodo.updateTodo(tTodoItem));
     verifyNoMoreInteractions(mockRepositoryTodo);
   });

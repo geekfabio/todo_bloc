@@ -54,7 +54,7 @@ void main() {
       //act
       final result = await todoRepositoryImpl.deleteTodo(tTodoModel);
       //assert
-      expect(result, equals(const Right<Failure, TodoModel>(tTodoModel)));
+      expect(result, equals(const Right<Failure, bool>(true)));
       verify(() => mockLocalDataSource.deleteTodo(tTodoModel));
       verifyNoMoreInteractions(mockLocalDataSource);
     });
@@ -66,7 +66,7 @@ void main() {
       //act
       final result = await todoRepositoryImpl.updateTodo(tTodoModel);
       //assert
-      expect(result, equals(const Right<Failure, TodoModel>(tTodoModel)));
+      expect(result, equals(const Right<Failure, bool>(true)));
 
       verify(() => mockLocalDataSource.updateTodo(tTodoModel));
       verifyNoMoreInteractions(mockLocalDataSource);
@@ -83,7 +83,8 @@ void main() {
             isDone: true));
 
     //Sucess Test
-    test("Deve retornar uma lista de TodoModel se contem o parametro passado",
+    test(
+        "getTodoByProject uma lista de TodoModel se contem o parametro passado",
         () async {
       //arrange
       when(() => mockLocalDataSource.getTodoByProject("Task"))
@@ -93,6 +94,19 @@ void main() {
       //assert
       expect(result, equals(Right<Failure, List<TodoModel>>(listTodo)));
       verify(() => mockLocalDataSource.getTodoByProject("Task"));
+      verifyNoMoreInteractions(mockLocalDataSource);
+    });
+
+    test("getAllTodo uma lista de TodoModel se contem o parametro passado",
+        () async {
+      //arrange
+      when(() => mockLocalDataSource.getAllTodo())
+          .thenAnswer((_) async => (listTodo));
+      //act
+      final result = await todoRepositoryImpl.getAllTodos();
+      //assert
+      expect(result, equals(Right<Failure, List<TodoModel>>(listTodo)));
+      verify(() => mockLocalDataSource.getAllTodo());
       verifyNoMoreInteractions(mockLocalDataSource);
     });
     //Failures Test

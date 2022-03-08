@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todo_bloc/core/error/exceptions.dart';
+import 'package:todo_bloc/core/error/failure.dart';
 import 'package:todo_bloc/features/todo_pomodoro/data/mapper/todo_mapper.dart';
 import 'package:todo_bloc/features/todo_pomodoro/data/models/todo_model.dart';
 
@@ -19,7 +19,6 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   final String _sharedKey = "todo_shared_key";
   final SharedPreferences sharedPreferences;
   // ? Store the List Of TodoModel
-  late List<TodoModel>? _listTodoModel;
 
   TodoLocalDataSourceImpl({
     required this.sharedPreferences,
@@ -48,16 +47,12 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
 
   @override
   Future<List<TodoModel>> getAllTodo() {
-    if (_listTodoModel != null) return Future.value(_listTodoModel);
-    final result = sharedPreferences.getString(_sharedKey);
+    final result = sharedPreferences.getStringList(_sharedKey);
     if (result != null) {
-      final json = jsonDecode(result);
-      final list = (json as List)
-          .map((e) => TodoModel.fromJson(e))
-          .toList()
-          .cast<TodoModel>();
-      _listTodoModel = list;
-      return Future.value(list);
+      final List<TodoModel> listOftodoModel =
+          result.map((e) => TodoModel.fromJson(e)).toList().cast<TodoModel>();
+
+      return Future.value(listOftodoModel);
     } else {
       return Future.value(List.empty());
     }
@@ -65,11 +60,14 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
 
   @override
   Future<TodoModel> getTodoById(String id) {
-    final source = sharedPreferences.getString(id);
+    final source = sharedPreferences.getStringList(id);
     if (source != null) {
-      return Future.value(TodoModel.fromJson(source));
+      final List<TodoModel> listOftodoModel =
+          source.map((e) => TodoModel.fromJson(e)).toList().cast<TodoModel>();
+      return Future.value(
+          listOftodoModel.firstWhere((element) => element.id == id));
     } else {
-      throw CacheException();
+      throw CacheFailure();
     }
   }
 
