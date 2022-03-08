@@ -47,17 +47,6 @@ void main() {
     test("addTodoModel", () async {
       //kkk desisto
     });
-
-    test("should a List of TodoModel", () async {
-      // arrange
-      TodosListModel todosListModel = TodosListModel(list: list);
-      when(() => dataSource.addListTodo(todoList: todosListModel))
-          .thenAnswer((_) async => true);
-      // act
-      final result = await dataSource.addListTodo(todoList: todosListModel);
-      // assert
-      expect(result, true);
-    });
   });
 
   group('Test local data source', () {
