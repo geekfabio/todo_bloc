@@ -7,13 +7,6 @@ abstract class TodoEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class TodoLoaded extends TodoEvent {
-  final List<TodoModel> todos;
-  const TodoLoaded({required this.todos});
-  @override
-  List<Object> get props => [todos];
-}
-
 class TodoAdded extends TodoEvent {
   final TodoModel todo;
   const TodoAdded({required this.todo});
@@ -49,34 +42,11 @@ class TodoUncompleted extends TodoEvent {
   List<Object> get props => [todo];
 }
 
+//Usar para limpar uma lista de tarefas
 class TodoCleared extends TodoEvent {
   final List<TodoModel> todos;
-  const TodoCleared({required this.todos});
+  final String project;
+  const TodoCleared({required this.project, required this.todos});
   @override
   List<Object> get props => [todos];
-}
-
-class TodoFilterChanged extends TodoEvent {
-  final TodoFilter filter;
-  const TodoFilterChanged({required this.filter});
-  @override
-  List<Object> get props => [filter];
-}
-
-class TodoSortChanged extends TodoEvent {
-  final TodoSort sort;
-  const TodoSortChanged({required this.sort});
-  @override
-  List<Object> get props => [sort];
-}
-
-enum TodoSort {
-  title,
-  date,
-}
-
-enum TodoFilter {
-  all,
-  active,
-  completed,
 }
