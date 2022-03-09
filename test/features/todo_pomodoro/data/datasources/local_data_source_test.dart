@@ -35,19 +35,6 @@ void main() {
     dateCreated: 'description',
     isDone: false,
   );
-  group("Test save TodoModel in local data source", () {
-    test("should add TodoModel in local data source", () async {
-      // arrange
-
-      // act
-
-      // assert
-    });
-
-    test("addTodoModel", () async {
-      //kkk desisto
-    });
-  });
 
   group('Test local data source', () {
     const tId = "1";
@@ -88,11 +75,19 @@ void main() {
       },
     );
     //Exception
-    test("Quando o método getById é nullo retornar CacheException", () sync* {
+    test("Quando o método getById é nullo retornar CacheException", () async {
       when(() async => dataSource.getTodoById(any()))
           .thenThrow(CacheException());
       final result = dataSource.getTodoById(tId);
       expect(result, isException);
+    });
+
+    test("Quando o método DeleteTodo é chamado deve eliminar uma Todo",
+        () async {
+      when(() => dataSource.deleteTodo(tTdodoItem))
+          .thenAnswer((_) async => true);
+      final result = dataSource.deleteTodo(tTdodoItem);
+      expect(result, true);
     });
   });
 }
