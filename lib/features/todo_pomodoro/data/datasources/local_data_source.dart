@@ -40,9 +40,13 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   }
 
   @override
-  Future<bool> deleteTodo(TodoModel todo) {
-    // TODO: implement deleteTodo
-    throw UnimplementedError();
+  Future<bool> deleteTodo(TodoModel todo) async {
+    List<TodoModel> todoModelSaved = await getAllTodo();
+    todoModelSaved.remove(todo);
+    //  List<String> iListTodoString = Map.from((TodoModel e) => );
+    List<String> objectSerialized =
+        (todoModelSaved).map((e) => e.toJson()).toList().cast<String>();
+    return await sharedPreferences.setStringList(_sharedKey, objectSerialized);
   }
 
   @override
