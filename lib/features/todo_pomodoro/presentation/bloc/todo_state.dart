@@ -11,16 +11,10 @@ class TodoInitial extends TodoState {}
 
 class TodoLoading extends TodoState {}
 
-class TodoLoadedByProject extends TodoState {
+class TodoLoaded extends TodoState {
   final List<TodoModel> todos;
-  const TodoLoadedByProject({required this.todos});
-  @override
-  List<Object> get props => [todos];
-}
+  const TodoLoaded({required this.todos});
 
-class TodoLoadedAll extends TodoState {
-  final List<TodoModel> todos;
-  const TodoLoadedAll({required this.todos});
   @override
   List<Object> get props => [todos];
 }
