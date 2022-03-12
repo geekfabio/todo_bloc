@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:todo_bloc/core/error/failure.dart';
-import 'package:todo_bloc/core/services/network_info.dart';
 import 'package:todo_bloc/features/todo_pomodoro/data/datasources/local_data_source.dart';
 import 'package:todo_bloc/features/todo_pomodoro/data/models/todo_model.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
@@ -8,9 +7,8 @@ import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_reposi
 
 class TodoRepositoryImpl implements TodoRepository {
   final TodoLocalDataSource localDataSource;
-  final NetworkInfo networkInfo;
-  TodoRepositoryImpl(
-      {required this.networkInfo, required this.localDataSource});
+  //final NetworkInfo networkInfo;
+  TodoRepositoryImpl({required this.localDataSource});
 
   /// add [TodoEntity], on the local cache. Otherwise return a failure
   @override
