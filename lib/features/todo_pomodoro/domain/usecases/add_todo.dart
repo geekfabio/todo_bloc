@@ -4,9 +4,9 @@ import 'package:todo_bloc/core/usecases/usecase.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/entities/todo_entity.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 
-class AddTodo implements UseCase<bool, TodoEntity> {
+class AddTodoUseCase implements UseCase<bool, TodoEntity> {
   final TodoRepository repository;
-  AddTodo({required this.repository});
+  AddTodoUseCase({required this.repository});
 
   @override
   Future<Either<Failure, bool>> call(TodoEntity params) async =>
