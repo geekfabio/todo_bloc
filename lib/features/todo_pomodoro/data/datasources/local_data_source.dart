@@ -26,12 +26,12 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
 
   @override
   Future<bool> addTodo(TodoModel todo) async {
-    List<TodoModel> todoModelSaved = await getAllTodo();
-    todoModelSaved.add(todo);
+    //  List<TodoModel> todoModelSaved = await getAllTodo();
+
     //  List<String> iListTodoString = Map.from((TodoModel e) => );
-    List<String> objectSerialized =
-        (todoModelSaved).map((e) => e.toJson()).toList().cast<String>();
-    return await sharedPreferences.setStringList(_sharedKey, objectSerialized);
+    // List<String> objectSerialized =
+    //      (todoModelSaved).map((e) => e.toJson()).toList().cast<String>();
+    return await sharedPreferences.setStringList(_sharedKey, [todo.toJson()]);
   }
 
   @override

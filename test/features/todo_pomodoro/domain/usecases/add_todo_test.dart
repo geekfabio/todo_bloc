@@ -10,11 +10,11 @@ class MockTodoRepository extends Mock implements TodoRepository {}
 
 void main() {
   late MockTodoRepository mockRepositoryTodo;
-  late AddTodo usecase;
+  late AddTodoUseCase usecase;
 
   setUp(() {
     mockRepositoryTodo = MockTodoRepository();
-    usecase = AddTodo(repository: mockRepositoryTodo);
+    usecase = AddTodoUseCase(repository: mockRepositoryTodo);
   });
 
   const tTdodoItem = TodoEntity(

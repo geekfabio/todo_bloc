@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
             //    themeMode: context.select((ThemeCubit cubit) => cubit.state.mode),
             themeMode: ThemeMode.dark,
             darkTheme: AppTheme.lightTheme,
-            title: 'Autocompletar form com NIF/ID',
+            title: 'Todo Bloc',
             home: const HomePage(),
           );
         },

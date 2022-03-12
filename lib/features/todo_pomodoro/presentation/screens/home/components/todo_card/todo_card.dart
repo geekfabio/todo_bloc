@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/models/todox_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_bloc/features/todo_pomodoro/data/models/todo_model.dart';
+import 'package:todo_bloc/features/todo_pomodoro/presentation/bloc/todo_bloc.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/themes/theme.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/widgets/ripple_extension.dart';
 
@@ -16,9 +18,8 @@ class TodoCard extends StatefulWidget {
 
 class _TodoCardState extends State<TodoCard> {
   void completeTask() {
-    widget.model.isChecked = !widget.model.isChecked;
-    if (widget.model.isChecked) {
-      todos.remove(widget.model);
+    if (widget.model.isDone) {
+      BlocProvider.of<TodoBloc>(context).add(TodoDeleted(todo: widget.model));
     }
   }
 
@@ -52,7 +53,7 @@ class _TodoCardState extends State<TodoCard> {
                       width: 0.51,
                     ),
                   ),
-                  child: widget.model.isChecked
+                  child: widget.model.isDone
                       ? Center(
                           child: Icon(Icons.check,
                               size: 14.0,
@@ -85,12 +86,12 @@ class _TodoCardState extends State<TodoCard> {
                       const SizedBox(
                         width: 6,
                       ),
-                      if (widget.model.tag != null)
+                      if (widget.model.project != null)
                         Expanded(
                           child: Text(
-                            "#${widget.model.tag!.title}",
+                            "#${widget.model.project}",
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(color: widget.model.tag!.color),
+                            style: TextStyle(color: Colors.accents[0]),
                             softWrap: true,
                             textAlign: TextAlign.right,
                           ),

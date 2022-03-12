@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_bloc/features/todo_pomodoro/data/models/todo_model.dart';
+import 'package:todo_bloc/features/todo_pomodoro/presentation/bloc/todo_bloc.dart';
 import 'package:todo_bloc/features/todo_pomodoro/presentation/components/menu/menu.dart';
-import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/models/todox_model.dart';
+import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/home/components/todo_card/todo_card.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/themes/theme.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/utils/responsive.dart';
+import 'package:todo_bloc/features/todo_pomodoro/shared/widgets/ripple_extension.dart';
 
-import 'todo_card/todo_card.dart';
+import '../../../../../../injection_container.dart';
 import 'todo_navbar/todo_navbar.dart';
 
 class ListOfTodos extends StatefulWidget {
@@ -18,8 +22,14 @@ class ListOfTodos extends StatefulWidget {
 
 class _ListOfTodosState extends State<ListOfTodos> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final TextEditingController txtController = TextEditingController();
   late ScrollController _scrollController;
-
+  TodoModel tTdodoItem = const TodoModel(
+    id: '1',
+    title: 'title',
+    dateCreated: 'description',
+    isDone: false,
+  );
   @override
   void initState() {
     _scrollController = ScrollController();
@@ -108,37 +118,10 @@ class _ListOfTodosState extends State<ListOfTodos> {
                       const SizedBox(
                         height: Insets.lg,
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: Insets.lg),
-                          child: TextField(
-                            onChanged: (value) {},
-                            maxLength: 100,
-                            decoration: const InputDecoration(
-                              hintText: "Add a task, press [enter]",
-                              filled: true,
-                              counterText: "",
-                              suffixIcon: Padding(
-                                  padding: EdgeInsets.all(20 * 0.75), //15
-                                  child: Icon(CupertinoIcons.add)),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 4,
-                        child: ListView.builder(
-                          itemCount: todos.length,
-                          itemBuilder: (context, index) => TodoCard(
-                            isActive: Responsive.isMobile(context)
-                                ? false
-                                : index == 0,
-                            model: todos[index],
-                          ),
-                        ),
-                      ),
+
+                      // ! Input to add Todo
+                      InputTodo(txtController: txtController),
+                      const ListViewTodo(),
                     ],
                   ),
                 )),
@@ -148,5 +131,133 @@ class _ListOfTodosState extends State<ListOfTodos> {
         ],
       ),
     );
+  }
+}
+
+class InputTodo extends StatelessWidget {
+  const InputTodo({
+    Key? key,
+    required this.txtController,
+  }) : super(key: key);
+
+  final TextEditingController txtController;
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: Insets.lg),
+        child: BlocProvider(
+          create: (context) => sl<TodoBloc>(),
+          child: TextField(
+            controller: txtController,
+            onSubmitted: (value) {
+              txtController.text = value;
+            },
+            onChanged: (value) {},
+            maxLength: 100,
+            decoration: const InputDecoration(
+              hintText: "Add a task, press [enter]",
+              filled: true,
+              counterText: "",
+              suffixIcon: Padding(
+                  padding: EdgeInsets.all(20 * 0.75), //15
+                  child: Icon(CupertinoIcons.add)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ListViewTodo extends StatelessWidget {
+  const ListViewTodo({
+    Key? key,
+  }) : super(key: key);
+
+  BlocProvider<TodoBloc> buildBody(BuildContext context) {
+    TodoModel todoModel = const TodoModel(
+        id: "id", title: "text", dateCreated: "dateCreated", isDone: false);
+    return BlocProvider(
+        create: ((context) => sl<TodoBloc>()),
+        child: BlocListener<TodoBloc, TodoState>(
+          listener: (context, state) {
+            if (state is TodoLoaded) {
+              const TodoList();
+            }
+            if (state is TodoAdded) {
+              const TodoList();
+            }
+            if (state is TodoUpdated) {
+              const TodoList();
+            }
+          },
+          child: BlocBuilder<TodoBloc, TodoState>(
+            builder: (context, state) {
+              if (state is TodoInitial) {
+                const CircularProgressIndicator();
+              }
+              if (state is TodoLoaded) {
+                const TodoList();
+              }
+
+              if (state is TodoAdded) {
+                const TodoList();
+              }
+
+              return Center(
+                child: Column(
+                  children: [
+                    Text(
+                      BlocProvider.of<TodoBloc>(context)
+                          .listTodoModel
+                          .length
+                          .toString(),
+                      style: const TextStyle(fontSize: 40),
+                    ).ripple(() {
+                      BlocProvider.of<TodoBloc>(context)
+                          .add(TodoAdded(todo: todoModel));
+                      debugPrint("Todo Added");
+                      debugPrint(BlocProvider.of<TodoBloc>(context)
+                          .listTodo
+                          .length
+                          .toString());
+                    }),
+                    TextButton(
+                        child: const Icon(Icons.adb),
+                        onPressed: () => BlocProvider.of<TodoBloc>(context)
+                            .add(TodoAdded(todo: todoModel))),
+                    TextButton(
+                        child: const Icon(Icons.ac_unit),
+                        onPressed: () => BlocProvider.of<TodoBloc>(context)
+                            .add(TodoUpdated(todo: todoModel)))
+                  ],
+                ),
+              );
+            },
+          ),
+        ));
+  }
+
+  @override
+  build(BuildContext context) {
+    return buildBody(context);
+  }
+}
+
+class TodoList extends StatelessWidget {
+  const TodoList({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: BlocProvider.of<TodoBloc>(context).listTodoModel.length,
+        itemBuilder: (context, index) => TodoCard(
+              isActive: Responsive.isMobile(context) ? false : index == 0,
+              model: BlocProvider.of<TodoBloc>(context).listTodoModel[index],
+            ));
   }
 }
