@@ -36,7 +36,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
 
   @override
   Future<bool> addListTodo({required TodosListModel todoList}) {
-    return sharedPreferences.setString(_sharedKey, todoList.toJson());
+    return sharedPreferences.setStringList(_sharedKey, [todoList.toJson()]);
   }
 
   @override

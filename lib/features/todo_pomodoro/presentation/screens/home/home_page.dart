@@ -27,8 +27,8 @@ class _HomePageState extends State<HomePage> {
                 child: const ListOfTodos()),
           ],
         ),
-        tablet: const ListOfTodos(),
-        mobile: const ListOfTodos(),
+        tablet: const Expanded(child: ListOfTodos()),
+        mobile: const Expanded(child: ListOfTodos()),
       ),
     );
   }
