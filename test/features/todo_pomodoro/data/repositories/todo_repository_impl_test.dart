@@ -32,7 +32,8 @@ void main() {
     mockNetworkInfo = MockNetworkInfo();
     mockLocalDataSource = MockLocalDataSource();
     todoRepositoryImpl = TodoRepositoryImpl(
-        localDataSource: mockLocalDataSource, networkInfo: mockNetworkInfo);
+      localDataSource: mockLocalDataSource,
+    );
   });
 
   group("Test repository methods", () {
