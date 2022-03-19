@@ -6,6 +6,7 @@ import 'package:todo_bloc/features/todo_pomodoro/data/repositories/todo_reposito
 import 'package:todo_bloc/features/todo_pomodoro/domain/repositories/todo_repository.dart';
 import 'package:todo_bloc/features/todo_pomodoro/domain/usecases/add_todo.dart';
 import 'package:todo_bloc/features/todo_pomodoro/presentation/bloc/todo_bloc.dart';
+import 'package:todo_bloc/features/todo_pomodoro/presentation/cubit/theme_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -19,13 +20,16 @@ Future<void> init() async {
   // ! Repository
   sl.registerLazySingleton<TodoRepository>(() => TodoRepositoryImpl(
         localDataSource: sl(),
-      
       ));
   //Data Sources
   sl.registerLazySingleton<TodoLocalDataSource>(
     () => TodoLocalDataSourceImpl(sharedPreferences: sl()),
   );
 
+  // ? theme
+  sl.registerFactory((() => ThemeCubit()));
+
+  
   // ? External
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 
