@@ -4,7 +4,7 @@ import 'package:todo_bloc/features/todo_pomodoro/presentation/cubit/theme_cubit.
 import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/home/home_page.dart';
 
 import 'features/todo_pomodoro/shared/themes/theme.dart';
-import 'injection_container.dart';
+import 'service_locator.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
