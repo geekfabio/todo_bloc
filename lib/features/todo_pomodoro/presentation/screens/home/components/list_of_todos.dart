@@ -5,11 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_bloc/features/todo_pomodoro/data/models/todo_model.dart';
 import 'package:todo_bloc/features/todo_pomodoro/presentation/bloc/todo_bloc.dart';
 import 'package:todo_bloc/features/todo_pomodoro/presentation/components/menu/menu.dart';
+import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/home/components/build_todo_list/build_todo_list_widget.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/themes/theme.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/utils/responsive.dart';
 
-import '../../../../../../injection_container.dart';
-import 'build_todo_list/build_todo_list_widget.dart';
+import '../../../../../../service_locator.dart';
 import 'todo_navbar/todo_navbar.dart';
 
 class ListOfTodos extends StatefulWidget {
@@ -152,17 +152,20 @@ class _ListOfTodosState extends State<ListOfTodos> {
                         ),
                       ),
                       BlocBuilder<TodoBloc, TodoState>(
-                        bloc: todoBloc,
+                        bloc: todoBloc..add(TodoFetchList()),
                         builder: (context, state) {
-                          return Center(
-                              child: (state is TodoInitial)
-                                  ? const Text("No Todos")
-                                  : (state is TodoLoaded)
-                                      ? const SizedBox()
-                                      : const CircularProgressIndicator());
+                          if (state is TodoLoadingState) {
+                            return const Text("No Todos");
+                          } else if (state is TodoEmptyList) {
+                            return const Text("No Todos");
+                          } else if (state is TodoLoadedState) {
+                            return BuildTodoList(todoBloc: todoBloc);
+                          } else {
+                            return const Text("No Todos");
+                          }
                         },
                       ),
-                      BuildTodoList(todoBloc: todoBloc),
+
                       // ! List view
                     ],
                   ),
@@ -186,9 +189,7 @@ class _ListOfTodosState extends State<ListOfTodos> {
         isDone: false);
     if (_txtController.text != "") {
       todoBloc.add(TodoAdded(todo: todoModel));
-      setState(() {
-        _txtController.text = "";
-      });
+      setState((() => _txtController.text = ""));
     }
   }
 }

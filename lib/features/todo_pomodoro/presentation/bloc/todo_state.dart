@@ -7,14 +7,24 @@ abstract class TodoState extends Equatable {
   List<Object> get props => [];
 }
 
-class TodoInitial extends TodoState {}
+class TodoLoadingState extends TodoState {}
 
-class TodoLoading extends TodoState {}
-
-class TodoLoaded extends TodoState {
-  final List<TodoModel> todos;
-  const TodoLoaded({required this.todos});
+class TodoLoadedState extends TodoState {
+  final List<TodoModel> listTodo;
+  const TodoLoadedState({required this.listTodo});
 
   @override
-  List<Object> get props => [todos];
+  List<Object> get props => [listTodo];
 }
+
+class TodoErrorState extends TodoState {
+  final String errorMessage;
+  const TodoErrorState({
+    required this.errorMessage,
+  });
+
+  @override
+  List<Object> get props => [errorMessage];
+}
+
+class TodoEmptyList extends TodoState {}

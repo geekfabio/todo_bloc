@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_bloc/injection_container.dart' as di;
+import 'package:todo_bloc/service_locator.dart' as di;
 import 'package:todo_bloc/my_app.dart';
 
 void main() async {

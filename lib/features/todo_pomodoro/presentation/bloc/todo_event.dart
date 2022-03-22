@@ -7,6 +7,8 @@ abstract class TodoEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class TodoFetchList extends TodoEvent {}
+
 class TodoAdded extends TodoEvent {
   final TodoModel todo;
   const TodoAdded({required this.todo});
@@ -19,8 +21,6 @@ class TodoUpdated extends TodoEvent {
   const TodoUpdated({required this.todo});
   @override
   List<Object> get props => [todo];
-
-  
 }
 
 class TodoDeleted extends TodoEvent {

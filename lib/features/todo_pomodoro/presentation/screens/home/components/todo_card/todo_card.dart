@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todo_bloc/features/todo_pomodoro/data/models/todo_model.dart';
+import 'package:todo_bloc/features/todo_pomodoro/presentation/bloc/todo_bloc.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/themes/theme.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/widgets/ripple_extension.dart';
+import 'package:todo_bloc/service_locator.dart';
 
 // ignore: must_be_immutable
 class TodoCard extends StatefulWidget {
@@ -13,12 +15,15 @@ class TodoCard extends StatefulWidget {
 }
 
 class _TodoCardState extends State<TodoCard> {
+  final bloc = sl<TodoBloc>();
   void completeTask() {
-    if (widget.model.isDone) {}
+    if (isDone) {
+      bloc.add(TodoUpdated(todo: widget.model));
+    }
   }
 
   bool isActive = false;
-
+  bool isDone = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,14 +59,18 @@ class _TodoCardState extends State<TodoCard> {
                         width: 0.51,
                       ),
                     ),
-                    child: widget.model.isDone
+                    child: isDone
                         ? Center(
                             child: Icon(Icons.check,
                                 size: 14.0,
                                 color: Theme.of(context).primaryColor),
                           )
                         : Container(),
-                  ).ripple(() {}),
+                  ).ripple(() {
+                    setState(() {
+                      isDone = !isDone;
+                    });
+                  }),
 
                   // text
                   Flexible(
