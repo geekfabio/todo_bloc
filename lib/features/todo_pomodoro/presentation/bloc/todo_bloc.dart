@@ -29,8 +29,16 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       try {
         final result = await getAllTodo(NoParams());
         if (result.isRight()) {
+          // ! TODO implement this best pratice to clean code
+          // result.fold((l) => CacheFailure(), (r) => null);
+
           List<TodoEntity> listEntity = result.getOrElse(() => []);
+          //To clean the list
+          listTodo.clear();
           listTodo.addAll(listEntity.map((e) => TodoModel.fromTodoEntity(e)));
+
+          //To clean the list
+          listEntity.clear();
           emit(TodoLoadedState(listTodo: listTodo));
         } else {
           emit(const TodoErrorState(errorMessage: "Error adding todo"));
