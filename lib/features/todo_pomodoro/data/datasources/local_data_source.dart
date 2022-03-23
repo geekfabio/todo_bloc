@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_bloc/core/error/failure.dart';
 import 'package:todo_bloc/features/todo_pomodoro/data/mapper/todo_mapper.dart';
@@ -18,6 +19,8 @@ abstract class TodoLocalDataSource {
 class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   final String _sharedKey = "todo_shared_key";
   final SharedPreferences sharedPreferences;
+  final _listTodo = <TodoModel>[];
+
   // ? Store the List Of TodoModel
 
   TodoLocalDataSourceImpl({
@@ -26,7 +29,10 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
 
   @override
   Future<bool> addTodo(TodoModel todo) async {
-    return await sharedPreferences.setStringList(_sharedKey, [todo.toJson()]);
+    _listTodo.add(todo);
+    debugPrint(json.encode(_listTodo.map((e) => e.toJson()).toList()));
+    return await sharedPreferences.setStringList(
+        _sharedKey, _listTodo.map((e) => e.toJson()).toList());
   }
 
   @override
@@ -45,15 +51,16 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   }
 
   @override
-  Future<List<TodoModel>> getAllTodo() {
-    final result = sharedPreferences.getStringList(_sharedKey);
-    if (result != null) {
-      final List<TodoModel> listOftodoModel =
-          result.map((e) => TodoModel.fromJson(e)).toList().cast<TodoModel>();
-
-      return Future.value(listOftodoModel);
+  Future<List<TodoModel>> getAllTodo() async {
+    List<String>? _listTodo = sharedPreferences.getStringList(_sharedKey);
+    if (_listTodo != null) {
+      final list = (_listTodo)
+          .map((e) => TodoModel.fromJson(e))
+          .toList()
+          .cast<TodoModel>();
+      return list;
     } else {
-      return Future.value(List.empty());
+      return Future.value([]);
     }
   }
 
@@ -86,17 +93,14 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   @override
   Future<List<TodoModel>> getTodoByProject(String project) {
     //retorna a lista guardada apenas do projeto especificado
-    final result = sharedPreferences.getString(project);
-    if (result != null) {
-      final json = jsonDecode(result);
-      final list = (json as List)
+    if (_listTodo != []) {
+      final newList = (json as List)
           .map((e) => TodoModel.fromJson(e).project == project)
           .toList()
           .cast<TodoModel>();
-
-      return Future.value(list);
+      return Future.value(newList);
     } else {
-      return Future.value(List.empty());
+      return Future.value([]);
     }
   }
 }
