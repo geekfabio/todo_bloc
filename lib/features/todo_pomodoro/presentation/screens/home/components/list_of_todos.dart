@@ -43,12 +43,7 @@ class _ListOfTodosState extends State<ListOfTodos> {
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.play_arrow),
         onPressed: () {
-          TodoModel todoModel = const TodoModel(
-              id: "id",
-              title: "text",
-              dateCreated: "dateCreated",
-              isDone: false);
-          todoBloc.add(TodoAdded(todo: todoModel));
+          todoBloc.add(TodoFetchList());
           setState(() {});
         },
       ),
@@ -138,21 +133,11 @@ class _ListOfTodosState extends State<ListOfTodos> {
                                 },
                               ),
                             ),
-                            MaterialButton(
-                              minWidth: 20,
-                              onPressed: () {
-                                _addTodoOnBloc();
-                              },
-                              child: const Icon(
-                                CupertinoIcons.add,
-                                size: 25,
-                              ),
-                            ),
                           ],
                         ),
                       ),
                       BlocBuilder<TodoBloc, TodoState>(
-                        bloc: todoBloc..add(TodoFetchList()),
+                        bloc: todoBloc,
                         builder: (context, state) {
                           if (state is TodoLoadingState) {
                             return const Text("No Todos");
