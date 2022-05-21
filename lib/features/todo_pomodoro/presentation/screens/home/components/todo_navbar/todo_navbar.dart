@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/home/components/todo_navbar/steps_card.dart';
-import 'package:todo_bloc/features/todo_pomodoro/presentation/screens/models/todox_model.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/themes/theme.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/widgets/ripple_extension.dart';
 
@@ -98,18 +96,7 @@ class _TodoNavBarState extends State<TodoNavBar> {
                   ),
                 ),
                 //TODO here steps List
-                //TODO chance this condition
-                if (todos.length == 100)
-                  Expanded(
-                    flex: 1,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: todos.length,
-                      itemBuilder: (context, index) => StepsCard(
-                        model: todos[index],
-                      ),
-                    ),
-                  ),
+
                 const BorderContainer(),
                 const SizedBox(
                   height: 10.0,
