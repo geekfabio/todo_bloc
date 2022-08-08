@@ -24,7 +24,6 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       required this.addTodoUseCase})
       : super(TodoLoadingState()) {
     // ignore: void_checks
-
     on<TodoFetchList>((event, emit) async {
       try {
         final result = await getAllTodo(NoParams());
@@ -36,7 +35,6 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
           //To clean the list
           listTodo.clear();
           listTodo.addAll(listEntity.map((e) => TodoModel.fromTodoEntity(e)));
-
           //To clean the list
           listEntity.clear();
           emit(TodoLoadedState(listTodo: listTodo));

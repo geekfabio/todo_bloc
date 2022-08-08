@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-///ADD effect when click a widget
 extension OnPressed on Widget {
   Widget ripple(Function onPressed,
           {BorderRadiusGeometry borderRadius =

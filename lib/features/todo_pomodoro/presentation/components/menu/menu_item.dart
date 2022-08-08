@@ -3,7 +3,7 @@ import 'package:todo_bloc/features/todo_pomodoro/shared/themes/theme.dart';
 
 import 'menu_item_count.dart';
 
-class MenuItem extends StatelessWidget {
+class MenuItemCustom extends StatelessWidget {
   final bool isActive;
   final bool isHover;
   final bool showBorder;
@@ -12,7 +12,7 @@ class MenuItem extends StatelessWidget {
   final Color iconColor;
   final String title;
   final VoidCallback callback;
-  const MenuItem({
+  const MenuItemCustom({
     Key? key,
     required this.title,
     required this.callback,

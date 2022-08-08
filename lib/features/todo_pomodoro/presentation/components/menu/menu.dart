@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/material.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/themes/theme.dart';
 import 'package:todo_bloc/features/todo_pomodoro/shared/utils/responsive.dart';
 
@@ -16,7 +15,7 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
-      padding: EdgeInsets.only(top: kIsWeb ? Insets.lg : 0),
+      padding: const EdgeInsets.only(top: kIsWeb ? Insets.lg : 0),
       color: Theme.of(context).scaffoldBackgroundColor,
       child: SafeArea(
         child: SingleChildScrollView(
@@ -41,7 +40,7 @@ class Menu extends StatelessWidget {
               const SizedBox(height: Insets.lg * 2),
 
               // Menu Items
-              MenuItem(
+              MenuItemCustom(
                 callback: () {},
                 title: "Today",
                 icon: Icons.wb_sunny_outlined,
@@ -50,7 +49,7 @@ class Menu extends StatelessWidget {
                 showBorder: false,
                 iconColor: Theme.of(context).primaryColor,
               ),
-              MenuItem(
+              MenuItemCustom(
                 callback: () {},
                 title: "Tomorrow",
                 icon: Icons.wb_twilight_rounded,
@@ -58,7 +57,7 @@ class Menu extends StatelessWidget {
                 showBorder: false,
                 iconColor: Theme.of(context).primaryColor,
               ),
-              MenuItem(
+              MenuItemCustom(
                 callback: () {},
                 title: "Upcomming",
                 icon: CupertinoIcons.speedometer,
@@ -66,7 +65,7 @@ class Menu extends StatelessWidget {
                 showBorder: false,
                 iconColor: Theme.of(context).primaryColor,
               ),
-              MenuItem(
+              MenuItemCustom(
                 callback: () {},
                 title: "Someday",
                 icon: Icons.calendar_view_month_sharp,
@@ -74,7 +73,7 @@ class Menu extends StatelessWidget {
                 showBorder: false,
                 iconColor: Theme.of(context).primaryColor,
               ),
-              MenuItem(
+              MenuItemCustom(
                 callback: () {},
                 title: "Completed",
                 icon: CupertinoIcons.calendar_today,
